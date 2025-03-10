@@ -245,7 +245,6 @@ func (h *HTTP) DoProbe() (bool, string) {
 
 	result := true
 	message := fmt.Sprintf("HTTP Status Code is %d", resp.StatusCode)
-
 	log.Debugf("[%s / %s] - %s", h.ProbeKind, h.ProbeName, h.TextChecker.String())
 	if err := h.Check(string(response)); err != nil {
 		log.Errorf("[%s / %s] - %v", h.ProbeKind, h.ProbeName, err)

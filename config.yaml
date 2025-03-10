@@ -1,0 +1,21 @@
+http: # http probes
+  - name: EaseProbe Github
+    url: https://github.com/megaease/easeprobea
+    success_code:
+      - [200,206] # the code >=200 and <= 206
+#           - [300,308] # the code >=300 and <= 308
+notify:
+  log:
+    - name: log file # local log file
+      file: easeprobe.log
+  guardian:
+    - name: guardian # local log file
+# #       file: easeprobe.log
+
+settings:
+  probe:
+    timeout: 30s # the time out for all probes
+    interval: 10s # probe every minute for all probes
+    failure: 1
+  http:
+      port: 8190

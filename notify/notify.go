@@ -24,6 +24,7 @@ import (
 	"github.com/megaease/easeprobe/notify/dingtalk"
 	"github.com/megaease/easeprobe/notify/discord"
 	"github.com/megaease/easeprobe/notify/email"
+	"github.com/megaease/easeprobe/notify/guardian"
 	"github.com/megaease/easeprobe/notify/lark"
 	"github.com/megaease/easeprobe/notify/log"
 	"github.com/megaease/easeprobe/notify/ringcentral"
@@ -41,6 +42,7 @@ type Config struct {
 	Log         []log.NotifyConfig         `yaml:"log,omitempty" json:"log,omitempty" jsonschema:"title=Log Notification,description=Log Notification Configuration"`
 	Email       []email.NotifyConfig       `yaml:"email,omitempty" json:"email,omitempty" jsonschema:"title=Email Notification,description=Email Notification Configuration"`
 	Slack       []slack.NotifyConfig       `yaml:"slack,omitempty" json:"slack,omitempty" jsonschema:"title=Slack Notification,description=Slack Notification Configuration"`
+	Guardian    []guardian.NotifyConfig    `yaml:"guardian,omitempty" json:"guardian,omitempty" jsonschema:"title=Guardian Notification,description=Guardian Notification Configuration"`
 	Discord     []discord.NotifyConfig     `yaml:"discord,omitempty" json:"discord,omitempty" jsonschema:"title=Discord Notification,description=Discord Notification Configuration"`
 	Telegram    []telegram.NotifyConfig    `yaml:"telegram,omitempty" json:"telegram,omitempty" jsonschema:"title=Telegram Notification,description=Telegram Notification Configuration"`
 	AwsSNS      []aws.NotifyConfig         `yaml:"aws_sns,omitempty" json:"aws_sns,omitempty" jsonschema:"title=AWS SNS Notification,description=AWS SNS Notification Configuration"`
