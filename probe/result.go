@@ -39,17 +39,18 @@ type Stat struct {
 
 // Result is the status of health check
 type Result struct {
-	Name             string        `json:"name" yaml:"name"`
-	Endpoint         string        `json:"endpoint" yaml:"endpoint"`
-	StartTime        time.Time     `json:"time" yaml:"time"`
-	StartTimestamp   int64         `json:"timestamp" yaml:"timestamp"`
-	RoundTripTime    time.Duration `json:"rtt" yaml:"rtt"`
-	Status           Status        `json:"status" yaml:"status"`
-	PreStatus        Status        `json:"prestatus" yaml:"prestatus"`
-	Message          string        `json:"message" yaml:"message"`
-	LatestDownTime   time.Time     `json:"latestdowntime" yaml:"latestdowntime"`
-	RecoveryDuration time.Duration `json:"recoverytime" yaml:"recoverytime"`
-	Stat             Stat          `json:"stat" yaml:"stat"`
+	Name             string            `json:"name" yaml:"name"`
+	Endpoint         string            `json:"endpoint" yaml:"endpoint"`
+	StartTime        time.Time         `json:"time" yaml:"time"`
+	StartTimestamp   int64             `json:"timestamp" yaml:"timestamp"`
+	RoundTripTime    time.Duration     `json:"rtt" yaml:"rtt"`
+	Status           Status            `json:"status" yaml:"status"`
+	PreStatus        Status            `json:"prestatus" yaml:"prestatus"`
+	Message          string            `json:"message" yaml:"message"`
+	LatestDownTime   time.Time         `json:"latestdowntime" yaml:"latestdowntime"`
+	RecoveryDuration time.Duration     `json:"recoverytime" yaml:"recoverytime"`
+	Stat             Stat              `json:"stat" yaml:"stat"`
+	LabelMap         map[string]string `json:"labels" yaml:"labels"`
 }
 
 // NewResult return a Result object
@@ -64,6 +65,7 @@ func NewResult() *Result {
 		PreStatus:        StatusInit,
 		Message:          "",
 		LatestDownTime:   time.Time{},
+		LabelMap:         map[string]string{},
 		RecoveryDuration: 0,
 		Stat: Stat{
 			Since: time.Now().UTC(),
@@ -112,6 +114,7 @@ func (r *Result) Clone() Result {
 	dst.LatestDownTime = r.LatestDownTime
 	dst.RecoveryDuration = r.RecoveryDuration
 	dst.Stat = r.Stat.Clone()
+	dst.LabelMap = r.LabelMap
 	return dst
 }
 

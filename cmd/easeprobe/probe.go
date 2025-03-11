@@ -53,6 +53,10 @@ func configProbers(probers []probe.Prober) []probe.Prober {
 		if len(p.Result().Message) <= 0 {
 			p.Result().Message = "Good Configuration!"
 		}
+
+		// persist labelmap through to result
+		p.Result().LabelMap = p.LabelMap()
+
 		validProbers = append(validProbers, p)
 	}
 

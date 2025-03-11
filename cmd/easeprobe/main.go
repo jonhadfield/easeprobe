@@ -198,8 +198,6 @@ func main() {
 	go func() {
 		for {
 			c := conf.Get()
-			// o, _ := json.MarshalIndent(c, "", "  ")
-			// fmt.Println(string(o))
 
 			select {
 			case <-doneRotate:

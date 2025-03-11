@@ -39,6 +39,7 @@ const (
 // NotifyConfig is the guardian notification configuration
 type NotifyConfig struct {
 	base.DefaultNotify `yaml:",inline"`
+	APIURL             string `yaml:"apiUrl" json:"apiUrl" jsonschema:"required,format=uri,title=API URL,description=The Guardian Notification API URL"`
 }
 
 // Config configures the guardian configuration
@@ -48,39 +49,20 @@ func (c *NotifyConfig) Config(gConf global.NotifySettings) error {
 	c.NotifySendFunc = c.SendGuardian
 	c.DefaultNotify.Config(gConf)
 	log.Debugf("Notification [%s] - [%s] configuration: %+v", c.NotifyKind, c.NotifyName, c)
-	return nil
-}
 
-// splitMessage splits the message into parts
-func splitMessage(message string) []string {
-	var parts []string
-	for len(message) > 0 {
-		if len(message) > MaxMessageLength {
-			parts = append(parts, message[:MaxMessageLength])
-			message = message[MaxMessageLength:]
-		} else {
-			parts = append(parts, message)
-			message = ""
-		}
-	}
-	return parts
+	return nil
 }
 
 // SendGuardian is the wrapper for SendGuardianNotification
 func (c *NotifyConfig) SendGuardian(title, text string) error {
-	fmt.Println("TITLE:", title)
-	fmt.Println("TEXT:", text)
-	// parts := splitMessage(text)
-	// for _, part := range parts {
 	err := c.SendGuardianNotification(text)
 	if err != nil {
 		return err
 	}
-	// }
 	return nil
 }
 
-type GuardianNotificationFormat struct {
+type NotificationFormat struct {
 	Name      string            `json:"name"`
 	Endpoint  string            `json:"endpoint"`
 	Time      time.Time         `json:"time"`
@@ -89,27 +71,44 @@ type GuardianNotificationFormat struct {
 	Status    string            `json:"status"`
 	Prestatus string            `json:"prestatus"`
 	Message   string            `json:"message"`
-	Tags      map[string]string `json:"tags"`
+	Labels    map[string]string `json:"labels"`
 }
 
 // SendGuardianNotification will send the notification to guardian.
 func (c *NotifyConfig) SendGuardianNotification(text string) error {
-	var notification GuardianNotificationFormat
+	var notification NotificationFormat
 	if err := json.Unmarshal([]byte(text), &notification); err != nil {
 		return err
 	}
-	tags := make(map[string]string)
-	tags["hosting"] = "Third Party"
-	tags["category"] = "application"
-	tags["platform"] = "github"
-	tags["application"] = "github"
-	notification.Tags = tags
-	updated, err := json.Marshal(notification)
-	api := "https://guardian.tukaz.co.uk/api/v1/monitoring/create"
-	fmt.Println("sending-request-to", api)
-	fmt.Println(string(updated))
-	log.Debugf("[%s] - API %s", c.Kind(), api)
-	req, err := http.NewRequest(http.MethodPost, api, bytes.NewBufferString(string(updated)))
+
+	type notificationSendFormat struct {
+		Name      string            `json:"name"`
+		Endpoint  string            `json:"endpoint"`
+		Time      time.Time         `json:"time"`
+		Timestamp int64             `json:"timestamp"`
+		Rtt       int               `json:"rtt"`
+		Status    string            `json:"status"`
+		Prestatus string            `json:"prestatus"`
+		Message   string            `json:"message"`
+		Tags      map[string]string `json:"tags"`
+	}
+
+	n := notificationSendFormat{
+		Name:      notification.Name,
+		Endpoint:  notification.Endpoint,
+		Time:      notification.Time,
+		Timestamp: notification.Timestamp,
+		Rtt:       notification.Rtt,
+		Status:    notification.Status,
+		Prestatus: notification.Prestatus,
+		Message:   notification.Message,
+		Tags:      notification.Labels,
+	}
+
+	updated, err := json.Marshal(n)
+	apiUrl := c.APIURL
+	log.Debugf("[%s] - API %s", c.Kind(), apiUrl)
+	req, err := http.NewRequest(http.MethodPost, apiUrl, bytes.NewBufferString(string(updated)))
 	if err != nil {
 		return err
 	}

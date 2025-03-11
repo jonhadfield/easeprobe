@@ -80,7 +80,6 @@ func (c *DefaultNotify) Notify(result probe.Result) {
 	}
 	title := result.Title()
 	message := report.FormatFuncs[c.NotifyFormat].ResultFn(result)
-
 	c.SendWithRetry(title, message, "Notification")
 }
 
