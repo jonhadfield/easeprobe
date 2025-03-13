@@ -26,9 +26,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // Ping implements a config for ping

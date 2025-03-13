@@ -27,9 +27,9 @@ import (
 	"time"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/base"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/crypto/ssh"
 )
@@ -158,7 +158,7 @@ func TestSSH(t *testing.T) {
 	_ssh.Servers[0].SetBastion(&bastion1)
 	assert.Equal(t, "bastion.my.com:22", _ssh.Servers[0].bastion.Host)
 
-	global.InitEaseProbe("EaseProbeTest", "none")
+	global.InitGuardianProbe("GuardianProbeTest", "none")
 	gConf := global.ProbeSettings{}
 	for i := 0; i < len(_ssh.Servers); i++ {
 		s := &_ssh.Servers[i]

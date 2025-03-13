@@ -24,9 +24,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // Disks is the disk usage
@@ -121,7 +121,7 @@ func (d *Disks) CheckThreshold() (bool, string) {
 
 // CreateMetrics create the disk metrics
 func (d *Disks) CreateMetrics(subsystem, name string) {
-	namespace := global.GetEaseProbe().Name
+	namespace := global.GetGuardianProbe().Name
 	d.metrics = metric.NewGauge(namespace, subsystem, name, "disk",
 		"Disk Usage", []string{"host", "disk", "state"}, d.Labels)
 }

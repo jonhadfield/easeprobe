@@ -19,22 +19,22 @@
 package notify
 
 import (
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify/aws"
-	"github.com/megaease/easeprobe/notify/dingtalk"
-	"github.com/megaease/easeprobe/notify/discord"
-	"github.com/megaease/easeprobe/notify/email"
-	"github.com/megaease/easeprobe/notify/guardian"
-	"github.com/megaease/easeprobe/notify/lark"
-	"github.com/megaease/easeprobe/notify/log"
-	"github.com/megaease/easeprobe/notify/ringcentral"
-	"github.com/megaease/easeprobe/notify/shell"
-	"github.com/megaease/easeprobe/notify/slack"
-	"github.com/megaease/easeprobe/notify/sms"
-	"github.com/megaease/easeprobe/notify/teams"
-	"github.com/megaease/easeprobe/notify/telegram"
-	"github.com/megaease/easeprobe/notify/wecom"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify/aws"
+	"github.com/o2ip/guardianprobe/notify/dingtalk"
+	"github.com/o2ip/guardianprobe/notify/discord"
+	"github.com/o2ip/guardianprobe/notify/email"
+	"github.com/o2ip/guardianprobe/notify/guardian"
+	"github.com/o2ip/guardianprobe/notify/lark"
+	"github.com/o2ip/guardianprobe/notify/log"
+	"github.com/o2ip/guardianprobe/notify/ringcentral"
+	"github.com/o2ip/guardianprobe/notify/shell"
+	"github.com/o2ip/guardianprobe/notify/slack"
+	"github.com/o2ip/guardianprobe/notify/sms"
+	"github.com/o2ip/guardianprobe/notify/teams"
+	"github.com/o2ip/guardianprobe/notify/telegram"
+	"github.com/o2ip/guardianprobe/notify/wecom"
+	"github.com/o2ip/guardianprobe/probe"
 )
 
 // Config is the notify configuration

@@ -19,8 +19,8 @@
 package conf
 
 import (
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify/base"
 )
 
 // Provider Interface

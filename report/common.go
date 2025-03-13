@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -88,7 +88,7 @@ func HTMLHeader(title string) string {
 
 // HTMLFooter return the HTML footer
 func HTMLFooter(time string) string {
-	footer := "<img src=\"" + global.GetEaseProbe().IconURL + "\" width=16 height=16> "
+	footer := "<img src=\"" + global.GetGuardianProbe().IconURL + "\" width=16 height=16> "
 	footer += global.FooterString() + " at " + time
 	return `
 	<p>` + footer + `</p>

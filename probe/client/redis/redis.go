@@ -24,7 +24,7 @@ import (
 	"fmt"
 
 	"github.com/go-redis/redis/v8"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -68,7 +68,7 @@ func (r *Redis) Probe() (bool, string) {
 		Password:    r.Password,  // no password set
 		DB:          0,           // use default DB
 		DialTimeout: r.Timeout(), // dial timout
-		TLSConfig:   r.tls,       //tls
+		TLSConfig:   r.tls,       // tls
 	})
 
 	ctx, cancel := context.WithTimeout(r.Context, r.Timeout())

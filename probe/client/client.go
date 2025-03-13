@@ -21,22 +21,22 @@ package client
 import (
 	"fmt"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/client/conf"
-	"github.com/megaease/easeprobe/probe/client/kafka"
-	"github.com/megaease/easeprobe/probe/client/memcache"
-	"github.com/megaease/easeprobe/probe/client/mongo"
-	"github.com/megaease/easeprobe/probe/client/mysql"
-	"github.com/megaease/easeprobe/probe/client/postgres"
-	"github.com/megaease/easeprobe/probe/client/redis"
-	"github.com/megaease/easeprobe/probe/client/zookeeper"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/probe/client/kafka"
+	"github.com/o2ip/guardianprobe/probe/client/memcache"
+	"github.com/o2ip/guardianprobe/probe/client/mongo"
+	"github.com/o2ip/guardianprobe/probe/client/mysql"
+	"github.com/o2ip/guardianprobe/probe/client/postgres"
+	"github.com/o2ip/guardianprobe/probe/client/redis"
+	"github.com/o2ip/guardianprobe/probe/client/zookeeper"
 	log "github.com/sirupsen/logrus"
 )
 
 // Client implements the structure of client
 type Client struct {
-	//Embed structure
+	// Embed structure
 	conf.Options `yaml:",inline"`
 
 	client conf.Driver `yaml:"-" json:"-"`

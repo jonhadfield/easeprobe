@@ -1,5 +1,5 @@
-# EaseProbe
-EaseProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go.
+# GuardianProbe
+GuardianProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go.
 
 ## Installation
 
@@ -9,7 +9,7 @@ EaseProbe is a simple, standalone, and lightweight tool that can do health/statu
   helm install easeprobe ./helm/easeprobe
   ```
   > **Note**:
-  > Persistence for EaseProbe is not enabled by default, you must enable it for production environment.
+  > Persistence for GuardianProbe is not enabled by default, you must enable it for production environment.
 
 - Start with Persistence
   ```shell
@@ -45,8 +45,8 @@ helm uninstall [RELEASE_NAME]
 ## Parameters
 | Name | Description | Value |
 | ---- | ----------- | ----- |
-| `config` | Configuration for EaseProbe, refer to [Manual](https://github.com/megaease/easeprobe/blob/main/docs/Manual.md) | `{}`
-| `image.repository` | Image repository | `megaease/easeprobe`
+| `config` | Configuration for GuardianProbe, refer to [Manual](https://github.com/o2ip/guardianprobe/blob/main/docs/Manual.md) | `{}`
+| `image.repository` | Image repository | `o2ip/guardianprobe`
 | `image.tag` | Image tag | `latest`
 | `image.pullPolicy` | Image pull policy | `IfNotPresent`
 | `imagePullSecrets` | Image pull secrets | `[]`

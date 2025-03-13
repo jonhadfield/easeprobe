@@ -25,8 +25,8 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	"github.com/stretchr/testify/assert"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -100,7 +100,7 @@ func TestMongo(t *testing.T) {
 	assert.True(t, s)
 	assert.Contains(t, m, "Successfully")
 
-	//Ping Error
+	// Ping Error
 	monkey.PatchInstanceMethod(reflect.TypeOf(client), "Ping", func(_ *mongo.Client, ctx context.Context, rp *readpref.ReadPref) error {
 		return fmt.Errorf("ping error")
 	})
@@ -108,7 +108,7 @@ func TestMongo(t *testing.T) {
 	assert.False(t, s)
 	assert.Contains(t, m, "ping error")
 
-	//Connect Error
+	// Connect Error
 	monkey.Patch(mongo.Connect, func(ctx context.Context, opts ...*options.ClientOptions) (*mongo.Client, error) {
 		return nil, fmt.Errorf("connect error")
 	})

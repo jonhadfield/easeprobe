@@ -24,7 +24,7 @@ show_usage() {
 
 if [ "${IMAGE_NAME:-x}" == "x" ];
 then
-   IMAGE_NAME=megaease/easeprobe
+   IMAGE_NAME=o2ip/guardianprobe
 fi
 
 if [ "${IMAGE_VERSION:-alpine-0.0.1}" != "alpine-0.0.1" ];

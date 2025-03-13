@@ -26,8 +26,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/report"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -94,7 +94,7 @@ func (c *NotifyConfig) ConfigLog() error {
 		if err := c.checkNetworkProtocol(); err != nil {
 			return err
 		}
-		writer, err := syslog.Dial(c.Network, c.Host, syslog.LOG_NOTICE, global.GetEaseProbe().Name)
+		writer, err := syslog.Dial(c.Network, c.Host, syslog.LOG_NOTICE, global.GetGuardianProbe().Name)
 		if err != nil {
 			log.Errorf("[%s / %s] cannot dial syslog network: %s", c.Kind(), c.Name(), err)
 			return err
@@ -104,7 +104,7 @@ func (c *NotifyConfig) ConfigLog() error {
 	} else if isSyslog == true { // only for local syslog
 		c.NotifyKind = syslogIdentifier
 		c.Type = SysLog
-		writer, err := syslog.New(syslog.LOG_NOTICE, global.GetEaseProbe().Name)
+		writer, err := syslog.New(syslog.LOG_NOTICE, global.GetGuardianProbe().Name)
 		if err != nil {
 			log.Errorf("[%s / %s] cannot open syslog: %s", c.Kind(), c.Name(), err)
 			return err

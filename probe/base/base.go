@@ -30,9 +30,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/net/proxy"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
+	"github.com/o2ip/guardianprobe/probe"
 )
 
 // Probe Simple Status

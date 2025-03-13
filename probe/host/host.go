@@ -22,9 +22,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/ssh"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/ssh"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -25,14 +25,14 @@ import (
 	"time"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/base"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/net/proxy"
 )
 
 func TestTCP(t *testing.T) {
-	global.InitEaseProbe("easeprobe", "http://icon")
+	global.InitGuardianProbe("guardianprobe", "http://icon")
 	tcp := TCP{
 		DefaultProbe: base.DefaultProbe{ProbeName: "dummy tcp"},
 		Host:         "example.com:8888",
@@ -62,7 +62,7 @@ func TestTCP(t *testing.T) {
 }
 
 func TestTCPProxy(t *testing.T) {
-	global.InitEaseProbe("easeprobe", "http://icon")
+	global.InitGuardianProbe("guardianprobe", "http://icon")
 	tcp := TCP{
 		DefaultProbe: base.DefaultProbe{ProbeName: "dummy tcp"},
 		Host:         "example.com:8888",

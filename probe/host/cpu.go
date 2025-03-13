@@ -24,9 +24,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // CPU is the cpu usage
@@ -111,7 +111,7 @@ func (c *CPU) CheckThreshold() (bool, string) {
 
 // CreateMetrics create the cpu metrics
 func (c *CPU) CreateMetrics(subsystem, name string) {
-	namespace := global.GetEaseProbe().Name
+	namespace := global.GetGuardianProbe().Name
 	c.metrics = metric.NewGauge(namespace, subsystem, name, "cpu",
 		"CPU Usage", []string{"host", "state"}, c.Labels)
 }

@@ -27,7 +27,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 )
@@ -61,7 +61,7 @@ func GetMetaData() *MetaData {
 // SetResultData set the result of probe
 // Note: this function would be called by status update goroutine
 //
-//	int saveData() in cmd/easeprobe/report.go
+//	int saveData() in cmd/guardianprobe/report.go
 func SetResultData(name string, result *Result) {
 	r := result.Clone()
 	mutex.Lock()

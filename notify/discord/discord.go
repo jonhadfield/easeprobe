@@ -27,10 +27,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify/base"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify/base"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/report"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -88,7 +88,7 @@ type Embed struct {
 	URL         string    `json:"url"`
 	Color       int       `json:"color"`
 	Description string    `json:"description"`
-	Timestamp   string    `json:"timestamp"` //"YYYY-MM-DDTHH:MM:SS.MSSZ"
+	Timestamp   string    `json:"timestamp"` // "YYYY-MM-DDTHH:MM:SS.MSSZ"
 	Thumbnail   Thumbnail `json:"thumbnail"`
 	Fields      []Fields  `json:"fields"`
 	Footer      Footer    `json:"footer"`
@@ -117,15 +117,15 @@ func (c *NotifyConfig) Config(gConf global.NotifySettings) error {
 	c.DefaultNotify.Config(gConf)
 
 	if len(strings.TrimSpace(c.Username)) <= 0 {
-		c.Username = global.GetEaseProbe().Name
+		c.Username = global.GetGuardianProbe().Name
 	}
 
 	if len(strings.TrimSpace(c.Avatar)) <= 0 {
-		c.Avatar = global.GetEaseProbe().IconURL
+		c.Avatar = global.GetGuardianProbe().IconURL
 	}
 
 	if len(strings.TrimSpace(c.Thumbnail)) <= 0 {
-		c.Thumbnail = global.GetEaseProbe().IconURL
+		c.Thumbnail = global.GetGuardianProbe().IconURL
 	}
 
 	log.Debugf("Notification [%s] - [%s] configuration: %+v", c.NotifyKind, c.NotifyName, c)
@@ -142,7 +142,7 @@ func (c *NotifyConfig) NewDiscord(result probe.Result) Discord {
 	}
 
 	// using https://www.spycolor.com/ to pick color
-	color := 1091331 //"#10a703" - green
+	color := 1091331 // "#10a703" - green
 	if result.Status != probe.StatusUp {
 		color = 10945283 // "#a70303" - red
 	}
@@ -162,7 +162,7 @@ func (c *NotifyConfig) NewDiscord(result probe.Result) Discord {
 		Fields:      []Fields{},
 		Footer: Footer{
 			Text:    global.FooterString(),
-			IconURL: global.GetEaseProbe().IconURL,
+			IconURL: global.GetGuardianProbe().IconURL,
 		},
 	})
 	return discord
@@ -237,10 +237,10 @@ func (c *NotifyConfig) NewField(result probe.Result, inline bool) Fields {
 func (c *NotifyConfig) NewEmbeds(probers []probe.Prober) []Discord {
 	var discords []Discord
 
-	//every page has 12 probe result
+	// every page has 12 probe result
 	const pageCnt = 12
 	total := len(probers)
-	//calculate how many page we need
+	// calculate how many page we need
 	pages := total / pageCnt
 	if total%pageCnt > 0 {
 		pages++
@@ -256,14 +256,14 @@ func (c *NotifyConfig) NewEmbeds(probers []probe.Prober) []Discord {
 
 		discord.Embeds = append(discord.Embeds, c.NewEmbed())
 
-		//calculate the current page start and end position
+		// calculate the current page start and end position
 		start := p * pageCnt
 		end := (p + 1) * pageCnt
 		if len(probers) < end {
 			end = len(probers)
 		}
 		for i := start; i < end; i++ {
-			//discord.Embeds = append(discord.Embeds, c.NewEmbed(*probers[i].Result()))
+			// discord.Embeds = append(discord.Embeds, c.NewEmbed(*probers[i].Result()))
 			discord.Embeds[0].Fields = append(discord.Embeds[0].Fields,
 				c.NewField(*probers[i].Result(), true))
 		}

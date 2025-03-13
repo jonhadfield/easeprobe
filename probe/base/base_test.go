@@ -30,8 +30,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/net/proxy"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
 )
 
 var (
@@ -74,7 +74,7 @@ func newDummyProber(name string) *dummyProber {
 }
 
 func TestBase(t *testing.T) {
-	global.InitEaseProbe("DummyProbe", "icon")
+	global.InitGuardianProbe("DummyProbe", "icon")
 	p := newDummyProber("probe")
 	p.Config(global.ProbeSettings{})
 	assert.Equal(t, "dummy", p.Kind())

@@ -36,8 +36,8 @@ import (
 	"time"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/base"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -75,7 +75,7 @@ func createCert(template *x509.Certificate) (*tls.Certificate, error) {
 }
 
 func init() {
-	global.InitEaseProbe("easeprobe", "http://404")
+	global.InitGuardianProbe("guardianprobe", "http://404")
 
 	priv, err := rsa.GenerateKey(rand.Reader, 4096)
 	if err != nil {

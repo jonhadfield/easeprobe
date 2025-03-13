@@ -27,8 +27,8 @@ import (
 	"github.com/gorilla/websocket"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // WebSocket implements a Config for a websocket prober.

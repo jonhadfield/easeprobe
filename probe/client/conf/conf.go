@@ -23,8 +23,8 @@ import (
 	"net"
 	"strconv"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // Driver Interface
@@ -70,7 +70,7 @@ type Options struct {
 	Password   string            `yaml:"password,omitempty" json:"password,omitempty" jsonschema:"title=Password,description=The password of the client,example=123456"`
 	Data       map[string]string `yaml:"data,omitempty" json:"data,omitempty" jsonschema:"title=Data,description=The data of the client,example={\"key\":\"value\"}"`
 
-	//TLS
+	// TLS
 	global.TLS `yaml:",inline"`
 }
 

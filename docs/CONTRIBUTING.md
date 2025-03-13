@@ -1,5 +1,5 @@
 # CONTRIBUTING
-So you've decided to actively join the development of EaseProbe!!! First let us Welcome you and **Thank You** for your interest.
+So you've decided to actively join the development of GuardianProbe!!! First let us Welcome you and **Thank You** for your interest.
 
 The following document will try to provide some general guidelines and information about the development processes to help your on-boarding experience.
 
@@ -16,8 +16,8 @@ The following are some guidelines that will help in getting your code contributi
     * update the README accordingly
 * If you introduced new files make sure to include the license on top of each new `.go` file. Running `resources/scripts/copyright.sh` will do that for you
 
-## How EaseProbe Works
-Basically, the EaseProbe have the following major code organization.
+## How GuardianProbe Works
+Basically, the GuardianProbe have the following major code organization.
 
 ### 1) Probe
 
@@ -58,7 +58,7 @@ The SLA Report contains the results of all Probers which include:
 
 ### 5) Metrics (Prometheus)
 
-EaseProbe supports exporting of probe metrics to prometheus. The package `metric/prometheus.go` help to create and register the metric.
+GuardianProbe supports exporting of probe metrics to prometheus. The package `metric/prometheus.go` help to create and register the metric.
 
 
 - **Base Metrics**. We implement some common metrics for all of Probers `probe/base/metrics.go` - Total Probe Times(Counter), Probe Duration(Gauge), Status(Gauge), and SLA(Gauge).
@@ -73,7 +73,7 @@ Examples
 
 
 ## Source Code Files
-* `cmd/easeprobe` This is the `main` package for the EaseProbe main function.
+* `cmd/easeprobe` This is the `main` package for the GuardianProbe main function.
     * `main.go` - `main()` function to do everything.
     * `probe.go` - Initialize and configure the Probers and start up all of probers
     * `notify.go` - Initialize and configure the Notifiers.

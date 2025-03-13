@@ -28,10 +28,10 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/ssh"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // Kind is the type of probe

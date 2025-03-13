@@ -47,7 +47,7 @@
 
 http: # http probes
   - name: EaseProbe Github
-    url: https://github.com/megaease/easeprobe
+    url: https://github.com/o2ip/guardianprobe
 
 
 # --------------------- TCP Probe Configuration ---------------------

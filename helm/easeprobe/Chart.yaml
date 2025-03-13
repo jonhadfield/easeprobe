@@ -4,10 +4,10 @@ apiVersion: v2
 appVersion: "2.0.0"
 name: easeprobe
 version: "1.0.0"
-description: EaseProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go
-home: https://github.com/megaease/easeprobe
+description: GuardianProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go
+home: https://github.com/o2ip/guardianprobe
 sources:
-  - "https://github.com/megaease/easeprobe"
+  - "https://github.com/o2ip/guardianprobe"
 maintainers:
   - name: MegaEase
     url: https://www.megaease.com

@@ -25,7 +25,7 @@ import (
 
 	"bou.ke/monkey"
 	"github.com/bradfitz/gomemcache/memcache"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	"github.com/stretchr/testify/assert"
 )
 

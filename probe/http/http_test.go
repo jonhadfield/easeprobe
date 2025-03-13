@@ -30,10 +30,10 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/eval"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/eval"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/base"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
@@ -59,7 +59,7 @@ func createHTTP() *HTTP {
 				},
 			},
 			DocType:    eval.JSON,
-			Expression: "name == 'EaseProbe'",
+			Expression: "name == 'GuardianProbe'",
 		},
 		User: "user",
 		Pass: "pass",
@@ -94,7 +94,7 @@ func TestHTTPConfig(t *testing.T) {
 	err = h.Config(global.ProbeSettings{})
 	assert.Error(t, err)
 
-	//TLS config success
+	// TLS config success
 	var gtls *global.TLS
 	monkey.PatchInstanceMethod(reflect.TypeOf(gtls), "Config", func(_ *global.TLS) (*tls.Config, error) {
 		return &tls.Config{}, nil

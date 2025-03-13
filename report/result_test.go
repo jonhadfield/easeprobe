@@ -28,8 +28,8 @@ import (
 	"time"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -142,7 +142,7 @@ func TestResultToHTML(t *testing.T) {
 	assert.NotEmpty(t, str)
 	assert.Contains(t, str, "EaseProbe")
 	assert.Contains(t, str, r.Title())
-	assert.Contains(t, str, global.GetEaseProbe().IconURL)
+	assert.Contains(t, str, global.GetGuardianProbe().IconURL)
 }
 
 func checkMarkdown(t *testing.T, str string, r probe.Result) {

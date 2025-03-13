@@ -8,14 +8,14 @@ PROBE_CONFIG=${PROBE_CONFIG:-/opt/config.yaml}
 
 echo "Using config file: ${PROBE_CONFIG}"
 
-# docker run megaease/easeprobe
+# docker run o2ip/guardianprobe
 if [ "$#" -eq 0 ]; then
    exec /opt/easeprobe
-# docker run megaease/easeprobe -f config.yaml
+# docker run o2ip/guardianprobe -f config.yaml
 elif [ "$1" != "--" ] && [ "$(echo $1 | head -c 1)" == "-" ] ; then
   exec /opt/easeprobe "$@"
-# docker run -it --rm megaease/easeprobe /bin/sh
-# docker run -it --rm megaease/easeprobe -- /bin/echo hello world
+# docker run -it --rm o2ip/guardianprobe /bin/sh
+# docker run -it --rm o2ip/guardianprobe -- /bin/echo hello world
 else
   exec "$@"
 fi

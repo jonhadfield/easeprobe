@@ -31,9 +31,9 @@ import (
 	"time"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/base"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
@@ -114,9 +114,9 @@ func TestDiscordConfig(t *testing.T) {
 	err := conf.Config(global.NotifySettings{})
 	assert.NoError(t, err)
 	assert.Equal(t, "discord", conf.Kind())
-	assert.Equal(t, conf.Username, global.GetEaseProbe().Name)
-	assert.Equal(t, conf.Avatar, global.GetEaseProbe().IconURL)
-	assert.Equal(t, conf.Thumbnail, global.GetEaseProbe().IconURL)
+	assert.Equal(t, conf.Username, global.GetGuardianProbe().Name)
+	assert.Equal(t, conf.Avatar, global.GetGuardianProbe().IconURL)
+	assert.Equal(t, conf.Thumbnail, global.GetGuardianProbe().IconURL)
 }
 
 func TestDiscordDryNotify(t *testing.T) {

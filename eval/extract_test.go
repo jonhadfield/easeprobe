@@ -55,7 +55,7 @@ func TestHTMLExtractor(t *testing.T) {
 	<body>
 		<h1>Hello World Example</h1>
 		<p>
-		<a href="https://github.com/megaease/easeprobe">EaseProbe Github </a> is a simple, standalone, and lightWeight tool that can do health/status checking, written in Go.
+		<a href="https://github.com/o2ip/guardianprobe">GuardianProbe Github </a> is a simple, standalone, and lightWeight tool that can do health/status checking, written in Go.
 		</p>
 		<div id=number>
 			<div id=one class=one>1</div>

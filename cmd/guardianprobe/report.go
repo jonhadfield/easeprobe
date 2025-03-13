@@ -21,10 +21,10 @@ import (
 	"time"
 
 	"github.com/go-co-op/gocron"
-	"github.com/megaease/easeprobe/channel"
-	"github.com/megaease/easeprobe/conf"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/channel"
+	"github.com/o2ip/guardianprobe/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -44,7 +44,7 @@ func saveData(doneSave chan bool, saveChannel chan probe.Result) {
 		save = func() {}
 	}
 
-	// save data to file when start the EaseProbe
+	// save data to file when start the GuardianProbe
 	save()
 
 	interval := time.NewTimer(c.Settings.Probe.Interval)
@@ -66,7 +66,7 @@ func saveData(doneSave chan bool, saveChannel chan probe.Result) {
 }
 
 func scheduleSLA(probers []probe.Prober) {
-	cron := gocron.NewScheduler(global.GetEaseProbe().TimeLoc)
+	cron := gocron.NewScheduler(global.GetGuardianProbe().TimeLoc)
 
 	dryNotify := conf.Get().Settings.Notify.Dry
 
@@ -95,7 +95,7 @@ func scheduleSLA(probers []probe.Prober) {
 	}
 
 	time := conf.Get().Settings.SLAReport.Time
-	tz := global.GetEaseProbe().TimeZone
+	tz := global.GetGuardianProbe().TimeZone
 	switch conf.Get().Settings.SLAReport.Schedule {
 	case conf.Minutely:
 		cron.Cron("* * * * *").Do(SLAFn)

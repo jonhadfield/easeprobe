@@ -23,10 +23,10 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/megaease/easeprobe/channel"
-	"github.com/megaease/easeprobe/conf"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/channel"
+	"github.com/o2ip/guardianprobe/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
 )
 
 func configProbers(probers []probe.Prober) []probe.Prober {

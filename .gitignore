@@ -3,7 +3,7 @@
 build/*
 data/*.yaml
 !.github/workflows/*.yaml
-helm/easeprobe/charts/
+helm/guardianprobe/charts/
 vendor/
 
 dist/

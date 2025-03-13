@@ -1,22 +1,22 @@
 annotations:
   licenses: Apache-2.0
 
-## EaseProbe configuration
+## GuardianProbe configuration
 config:
   http:
-    - name: EaseProbe Github
-      url: https://github.com/megaease/easeprobe
+    - name: GuardianProbe Github
+      url: https://github.com/o2ip/guardianprobe
   notify:
     log:
       - name: log file
-        file: /var/log/easeprobe.log
+        file: /var/log/guardianprobe.log
   settings:
     probe:
       timeout: 30s
       interval: 1m
 
 image:
-  repository: megaease/easeprobe
+  repository: TBC/guardianprobe
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -39,7 +39,7 @@ prometheus:
   server:
     persistentVolume:
       enabled: false
-  # Scrape EaseProbe metrics
+  # Scrape GuardianProbe metrics
   extraScrapeConfigs: |
     - job_name: easeprobe
       kubernetes_sd_configs:

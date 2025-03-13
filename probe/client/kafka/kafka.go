@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	"github.com/segmentio/kafka-go"
 	"github.com/segmentio/kafka-go/sasl/plain"
 	log "github.com/sirupsen/logrus"

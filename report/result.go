@@ -24,8 +24,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -177,7 +177,7 @@ func ToSlack(r probe.Result) string {
 				"elements": [
 					{
 						"type": "image",
-						"image_url": "` + global.GetEaseProbe().IconURL + `",
+						"image_url": "` + global.GetGuardianProbe().IconURL + `",
 						"alt_text": "` + global.OrgProg + `"
 					},
 					{

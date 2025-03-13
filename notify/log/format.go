@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-// Package log is the log package for easeprobe.
+// Package log is the log package for guardianprobe.
 package log
 
 import (
 	"fmt"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -39,8 +39,8 @@ func (s *SysLogFormatter) Format(entry *log.Entry) ([]byte, error) {
 	}
 
 	timestamp := time.Now().Local().Format(time.RFC3339)
-	host := global.GetEaseProbe().Host
-	app := global.GetEaseProbe().Name
+	host := global.GetGuardianProbe().Host
+	app := global.GetGuardianProbe().Name
 
 	msg := fmt.Sprintf("%s %s %s %s %s\n", timestamp, host, app, entry.Level.String(), entry.Message)
 	return []byte(msg), nil

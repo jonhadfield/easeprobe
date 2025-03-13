@@ -43,11 +43,11 @@ const (
 var (
 	// Ver is the program version
 	// It will be set by the build script
-	// go build -ldflags "-X github.com/megaease/easeprobe/global.Ver=1.0.0"
+	// go build -ldflags "-X github.com/o2ip/guardianprobe/global.Ver=1.0.0"
 	Ver = "v1.7.0"
-	//OrgProg combine organization and program
+	// OrgProg combine organization and program
 	OrgProg = Org + " " + DefaultProg
-	//OrgProgVer combine organization and program and version
+	// OrgProgVer combine organization and program and version
 	OrgProgVer = Org + " " + DefaultProg + "/" + Ver
 )
 
@@ -90,7 +90,7 @@ const (
 	// DefaultDataFile is the default data file name
 	DefaultDataFile = "data/data.yaml"
 	// DefaultPIDFile is the default pid file name
-	DefaultPIDFile = "easeprobe.pid"
+	DefaultPIDFile = "guardianprobe.pid"
 )
 
 const (
@@ -127,7 +127,7 @@ func normalize[T constraints.Ordered](global, local, valid, _default T) T {
 	// if the val is invalid, then assign the default value
 	if local <= valid {
 		local = _default
-		//if the global configuration is validated, assign the global
+		// if the global configuration is validated, assign the global
 		if global > valid {
 			local = global
 		}

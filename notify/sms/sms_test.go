@@ -22,11 +22,11 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify/sms/conf"
-	"github.com/megaease/easeprobe/notify/sms/nexmo"
-	"github.com/megaease/easeprobe/notify/sms/twilio"
-	"github.com/megaease/easeprobe/notify/sms/yunpian"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify/sms/conf"
+	"github.com/o2ip/guardianprobe/notify/sms/nexmo"
+	"github.com/o2ip/guardianprobe/notify/sms/twilio"
+	"github.com/o2ip/guardianprobe/notify/sms/yunpian"
 	"github.com/stretchr/testify/assert"
 )
 

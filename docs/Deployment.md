@@ -3,24 +3,24 @@
 - [Deployment Guide](#deployment-guide)
   - [1. Overview](#1-overview)
   - [2. Standalone Deployment](#2-standalone-deployment)
-    - [2.1 Download EaseProbe](#21-download-easeprobe)
-    - [2.2 Configure EaseProbe](#22-configure-easeprobe)
-    - [2.3 Run EaseProbe](#23-run-easeprobe)
+    - [2.1 Download GuardianProbe](#21-download-easeprobe)
+    - [2.2 Configure GuardianProbe](#22-configure-easeprobe)
+    - [2.3 Run GuardianProbe](#23-run-easeprobe)
   - [3. Docker Deployment](#3-docker-deployment)
   - [4. Docker-Compose Deployment](#4-docker-compose-deployment)
   - [5. Kubernetes Deployment](#5-kubernetes-deployment)
-    - [5.1 Creating the ConfigMap for EaseProbe Configuration file](#51-creating-the-configmap-for-easeprobe-configuration-file)
-    - [5.2 Creating a PV/PVC for EaseProbe SLA data persistent.](#52-creating-a-pvpvc-for-easeprobe-sla-data-persistent)
-    - [5.3 Deploy EaseProbe](#53-deploy-easeprobe)
-    - [5.4 Create the EaseProbe Service](#54-create-the-easeprobe-service)
+    - [5.1 Creating the ConfigMap for GuardianProbe Configuration file](#51-creating-the-configmap-for-easeprobe-configuration-file)
+    - [5.2 Creating a PV/PVC for GuardianProbe SLA data persistent.](#52-creating-a-pvpvc-for-easeprobe-sla-data-persistent)
+    - [5.3 Deploy GuardianProbe](#53-deploy-easeprobe)
+    - [5.4 Create the GuardianProbe Service](#54-create-the-easeprobe-service)
   - [6. Kubernetes Deployment Using Helm](#6-kubernetes-deployment-using-helm)
 
 
 ## 1. Overview
 
-EaseProbe is a Go application and can be deployed on any platform that supports Go.
+GuardianProbe is a Go application and can be deployed on any platform that supports Go.
 
-This document describes how to deploy EaseProbe on the following ways:
+This document describes how to deploy GuardianProbe on the following ways:
 
 - **Standalone Deployment** - run EaseProbe as a systemd service.
 - **Docker Deployment** - run EaseProbe as a container.
@@ -35,12 +35,12 @@ The following steps describe how to deploy EaseProbe as a standalone application
 
 ### 2.1 Download EaseProbe
 
-Download the latest version of EaseProbe from the [EaseProbe Release Page](https://github.com/megaease/easeprobe/releases), find the EaseProbe binary for your platform and download it.
+Download the latest version of EaseProbe from the [EaseProbe Release Page](https://github.com/o2ip/guardianprobe/releases), find the EaseProbe binary for your platform and download it.
 
 for example,
 
 ```bash
-wget https://github.com/megaease/easeprobe/releases/download/v2.0.0/easeprobe-v2.0.0-linux-amd64.tar.gz
+wget https://github.com/o2ip/guardianprobe/releases/download/v2.0.0/easeprobe-v2.0.0-linux-amd64.tar.gz
 tar -xvf easeprobe-v2.0.0-linux-amd64.tar.gz
 ```
 
@@ -153,7 +153,7 @@ docker run -d --name easeprobe \
   -p 8181:8181 \
   -v /path/to/config.yaml:/opt/config.yaml \
   -v /path/to/data:/opt/data \
-  megaease/easeprobe:latest
+  o2ip/guardianprobe:latest
 ```
 
 > Note:
@@ -319,7 +319,7 @@ spec:
     spec:
       containers:
       - name: easeprobe
-        image: megaease/easeprobe
+        image: o2ip/guardianprobe
         ports:
         - containerPort: 8181
         volumeMounts:

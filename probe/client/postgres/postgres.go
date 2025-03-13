@@ -25,8 +25,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	log "github.com/sirupsen/logrus"
 	"github.com/uptrace/bun/driver/pgdriver"
 )
@@ -143,7 +143,7 @@ func (r *PostgreSQL) ProbeWithDataChecking() (bool, string) {
 
 func (r *PostgreSQL) verifyData(k, v string) (bool, string) {
 	log.Debugf("[%s / %s / %s] - Verifying Data - [%s] : [%s]", r.ProbeKind, r.ProbeName, r.ProbeTag, k, v)
-	//connect to the database
+	// connect to the database
 	dbName, sqlstr, err := r.getSQL(k)
 	if err != nil {
 		return false, fmt.Sprintf("Invalid SQL data - [%s], %v", v, err)
@@ -166,7 +166,7 @@ func (r *PostgreSQL) verifyData(k, v string) (bool, string) {
 	if !rows.Next() {
 		return false, fmt.Sprintf("No data found for [%s]", k)
 	}
-	//check the value is equal to the value in data
+	// check the value is equal to the value in data
 	var value string
 	if err := rows.Scan(&value); err != nil {
 		return false, err.Error()
@@ -195,7 +195,7 @@ func (r *PostgreSQL) getSQL(str string) (string, string, error) {
 	field := global.EscapeQuote(fields[2])
 	key := global.EscapeQuote(fields[3])
 	value := global.EscapeQuote(fields[4])
-	//check value is int or not
+	// check value is int or not
 	if _, err := strconv.Atoi(value); err != nil {
 		return "", "", fmt.Errorf("Invalid SQL data - [%s], the value must be int", str)
 	}

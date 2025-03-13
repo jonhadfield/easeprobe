@@ -18,8 +18,8 @@
 package ping
 
 import (
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
 	"github.com/prometheus/client_golang/prometheus"
 )
 
@@ -35,7 +35,7 @@ type metrics struct {
 
 // newMetrics create the metrics
 func newMetrics(subsystem, name string, constLabels prometheus.Labels) *metrics {
-	namespace := global.GetEaseProbe().Name
+	namespace := global.GetGuardianProbe().Name
 	return &metrics{
 		PacketsSent: metric.NewCounter(namespace, subsystem, name, "sent",
 			"Total Package Sent", []string{"name", "endpoint"}, constLabels),

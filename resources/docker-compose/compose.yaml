@@ -27,7 +27,7 @@ services:
 
   # EaseProbe Service
   easeprobe:
-    image: megaease/easeprobe
+    image: o2ip/guardianprobe
     container_name: easeprobe
     ports:
        - 8181:8181

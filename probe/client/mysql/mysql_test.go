@@ -27,8 +27,8 @@ import (
 
 	"bou.ke/monkey"
 	"github.com/go-sql-driver/mysql"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -191,7 +191,7 @@ func TestData(t *testing.T) {
 	assert.True(t, s)
 	assert.Contains(t, m, "Successfully")
 
-	//mismatch
+	// mismatch
 	monkey.PatchInstanceMethod(reflect.TypeOf(r), "Scan", func(_ *sql.Rows, args ...interface{}) error {
 		v := args[0].(*string)
 		*v = "unexpected"

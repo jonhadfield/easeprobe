@@ -23,12 +23,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify"
-	baseNotify "github.com/megaease/easeprobe/notify/base"
-	"github.com/megaease/easeprobe/probe"
-	baseProbe "github.com/megaease/easeprobe/probe/base"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify"
+	baseNotify "github.com/o2ip/guardianprobe/notify/base"
+	"github.com/o2ip/guardianprobe/probe"
+	baseProbe "github.com/o2ip/guardianprobe/probe/base"
+	"github.com/o2ip/guardianprobe/report"
 	"github.com/stretchr/testify/assert"
 )
 

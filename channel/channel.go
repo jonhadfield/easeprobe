@@ -22,8 +22,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/megaease/easeprobe/notify"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/notify"
+	"github.com/o2ip/guardianprobe/probe"
 	log "github.com/sirupsen/logrus"
 )
 

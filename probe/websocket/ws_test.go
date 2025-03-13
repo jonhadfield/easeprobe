@@ -28,8 +28,8 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 type TestCase struct {

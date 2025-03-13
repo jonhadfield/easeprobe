@@ -26,8 +26,8 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	"github.com/stretchr/testify/assert"
 	"github.com/uptrace/bun/driver/pgdriver"
 )

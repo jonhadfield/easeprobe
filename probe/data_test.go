@@ -30,7 +30,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v3"
 
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 )
 
 var testResults = []Result{
@@ -129,23 +129,23 @@ func checkData(t *testing.T) {
 }
 
 func TestNewDataFile(t *testing.T) {
-	//disable data file
+	// disable data file
 	newDataFile("-")
 	assert.False(t, isDataFileExisted("-"))
 
-	//default data file
+	// default data file
 	file := global.DefaultDataFile
 	newDataFile(file)
 	assert.True(t, isDataFileExisted(file))
 	removeAll("data/")
 
-	//default data file
+	// default data file
 	file = "data.yaml"
 	newDataFile(file)
 	assert.True(t, isDataFileExisted(file))
 	removeAll(file)
 
-	//custom data file
+	// custom data file
 	file = "x/y/z/mydata.yaml"
 	makeAllDir(file)
 	newDataFile(file)

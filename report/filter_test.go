@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/base"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -127,7 +127,7 @@ func TestFilter(t *testing.T) {
 	filter.SLAGreater = -100
 	err = filter.Check()
 	assert.NotNil(t, err)
-	//sla >= 40  && sla <= 60
+	// sla >= 40  && sla <= 60
 	filter.SLAGreater = 40
 	err = filter.Check()
 	assert.Nil(t, err)

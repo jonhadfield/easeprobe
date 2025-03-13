@@ -24,7 +24,7 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -66,7 +66,7 @@ func TestPIDFileSymLink(t *testing.T) {
 	target := "test.txt"
 	os.MkdirAll(path, 0755)
 	os.WriteFile(filepath.Join(path, "test.txt"), []byte("Hello\n"), 0644)
-	symlink := filepath.Join(path, "easeprobe.pid")
+	symlink := filepath.Join(path, "guardianprobe.pid")
 	os.Symlink(target, symlink)
 
 	c, err := NewPIDFile(symlink)

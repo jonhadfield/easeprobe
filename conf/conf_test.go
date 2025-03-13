@@ -29,19 +29,19 @@ import (
 	"time"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify"
-	"github.com/megaease/easeprobe/notify/discord"
-	"github.com/megaease/easeprobe/notify/email"
-	"github.com/megaease/easeprobe/notify/slack"
-	"github.com/megaease/easeprobe/notify/telegram"
-	"github.com/megaease/easeprobe/probe/client"
-	clientConf "github.com/megaease/easeprobe/probe/client/conf"
-	"github.com/megaease/easeprobe/probe/host"
-	httpProbe "github.com/megaease/easeprobe/probe/http"
-	"github.com/megaease/easeprobe/probe/shell"
-	"github.com/megaease/easeprobe/probe/ssh"
-	"github.com/megaease/easeprobe/probe/tcp"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify"
+	"github.com/o2ip/guardianprobe/notify/discord"
+	"github.com/o2ip/guardianprobe/notify/email"
+	"github.com/o2ip/guardianprobe/notify/slack"
+	"github.com/o2ip/guardianprobe/notify/telegram"
+	"github.com/o2ip/guardianprobe/probe/client"
+	clientConf "github.com/o2ip/guardianprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/probe/host"
+	httpProbe "github.com/o2ip/guardianprobe/probe/http"
+	"github.com/o2ip/guardianprobe/probe/shell"
+	"github.com/o2ip/guardianprobe/probe/ssh"
+	"github.com/o2ip/guardianprobe/probe/tcp"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v3"
@@ -115,7 +115,7 @@ func TestGetYamlFileFromFile(t *testing.T) {
 		t.Errorf("getYamlFileFromFile(\"%s\") = %v, expected nil", tmpfile.Name(), err)
 	}
 
-	//confirm we read empty data
+	// confirm we read empty data
 	if string(data) != "" {
 		t.Errorf("getYamlFileFromFile(\"%s\") got data %s, expected nil", tmpfile.Name(), data)
 	}
@@ -534,14 +534,14 @@ func checkEmailNotify(t *testing.T, n email.NotifyConfig) {
 
 const confSettings = `
 settings:
-  name: "EaseProbeBot"
+  name: "GuardianProbeBot"
   icon: https://upload.wikimedia.org/wikipedia/commons/2/2d/Etcher-icon.png
   http:
     ip: 127.0.0.1
     port: 8181
     refresh: 5s
     log:
-      file: /tmp/log/easeprobe.access.log
+      file: /tmp/log/guardianprobe.access.log
       self_rotate: true
   sla:
     schedule: "weekly"
@@ -563,12 +563,12 @@ settings:
 `
 
 func checkSettings(t *testing.T, s Settings) {
-	assert.Equal(t, s.Name, "EaseProbeBot")
+	assert.Equal(t, s.Name, "GuardianProbeBot")
 	assert.Equal(t, s.IconURL, "https://upload.wikimedia.org/wikipedia/commons/2/2d/Etcher-icon.png")
 	assert.Equal(t, s.HTTPServer.IP, "127.0.0.1")
 	assert.Equal(t, s.HTTPServer.Port, "8181")
 	assert.Equal(t, s.HTTPServer.AutoRefreshTime, 5*time.Second)
-	assert.Equal(t, s.HTTPServer.AccessLog.File, "/tmp/log/easeprobe.access.log")
+	assert.Equal(t, s.HTTPServer.AccessLog.File, "/tmp/log/guardianprobe.access.log")
 	assert.Equal(t, s.HTTPServer.AccessLog.SelfRotate, true)
 	assert.Equal(t, s.SLAReport.Schedule, Weekly)
 	assert.Equal(t, s.SLAReport.Time, "23:59")
@@ -613,7 +613,7 @@ func TestConfig(t *testing.T) {
 	_, err = New(&file)
 	assert.NotNil(t, err)
 
-	os.Setenv("WEB_SITE", "https://easeprobe.com")
+	os.Setenv("WEB_SITE", "https://guardianprobe.com")
 	monkey.Patch(yaml.Marshal, func(v interface{}) ([]byte, error) {
 		return nil, errors.New("marshal error")
 	})
@@ -625,7 +625,7 @@ func TestConfig(t *testing.T) {
 	assert.Nil(t, err)
 	conf := Get()
 
-	assert.Equal(t, "EaseProbeBot", conf.Settings.Name)
+	assert.Equal(t, "GuardianProbeBot", conf.Settings.Name)
 	assert.Equal(t, "0.1.0", conf.Version)
 
 	for _, v := range conf.HTTP {
@@ -658,7 +658,7 @@ func TestConfig(t *testing.T) {
 	os.Setenv("HTTP_TIMEOUT", "10")
 	httpConf, err := New(&url)
 	assert.Nil(t, err)
-	assert.Equal(t, "EaseProbeBot", httpConf.Settings.Name)
+	assert.Equal(t, "GuardianProbeBot", httpConf.Settings.Name)
 	assert.Equal(t, "0.1.0", httpConf.Version)
 
 	// test config modification

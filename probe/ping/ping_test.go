@@ -24,8 +24,8 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/base"
 	ping "github.com/prometheus-community/pro-bing"
 	"github.com/stretchr/testify/assert"
 )

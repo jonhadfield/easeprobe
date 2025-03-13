@@ -24,10 +24,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/base"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/base"
+	"github.com/o2ip/guardianprobe/report"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )

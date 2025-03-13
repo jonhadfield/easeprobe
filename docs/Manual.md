@@ -1,6 +1,6 @@
 <h1>User Manual</h1>
 
-EaseProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go.
+GuardianProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go.
 
 ![](./overview.png)
 
@@ -1966,7 +1966,7 @@ settings:
 
 ## 8.1 EaseProbe JSON Schema
 
-We have a JSON schema that can be used to validate your EaseProbe configuration. The schema can be found at [resources/schema.json](https://raw.githubusercontent.com/megaease/easeprobe/main/resources/schema.json).
+We have a JSON schema that can be used to validate your EaseProbe configuration. The schema can be found at [resources/schema.json](https://raw.githubusercontent.com/o2ip/guardianprobe/main/resources/schema.json).
 
 The schema file can be generated at any time by running the following command:
 
@@ -1979,7 +1979,7 @@ In order to use the schema with VSCode for validating your configuration, you ne
 ```json
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/megaease/easeprobe/main/resources/schema.json": [
+    "https://raw.githubusercontent.com/o2ip/guardianprobe/main/resources/schema.json": [
       "/path/to/config.yaml"
     ]
   }

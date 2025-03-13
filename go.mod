@@ -1,4 +1,4 @@
-module github.com/megaease/easeprobe
+module github.com/o2ip/guardianprobe
 
 go 1.22
 

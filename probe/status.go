@@ -20,7 +20,7 @@ package probe
 import (
 	"strings"
 
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 )
 
 // Status is the status of Probe

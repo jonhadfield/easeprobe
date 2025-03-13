@@ -1,13 +1,6 @@
-<h1>EaseProbe</h1>
+<h1>GuardianProbe</h1>
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/megaease/easeprobe)](https://goreportcard.com/report/github.com/megaease/easeprobe)
-[![codecov](https://codecov.io/gh/megaease/easeprobe/branch/main/graph/badge.svg?token=L7SR8X6SRN)](https://codecov.io/gh/megaease/easeprobe)
-[![Build](https://github.com/megaease/easeprobe/actions/workflows/test.yaml/badge.svg)](https://github.com/megaease/easeprobe/actions/workflows/test.yaml)
-[![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/megaease/easeprobe)](https://github.com/megaease/easeprobe/blob/main/go.mod)
-[![Join MegaEase Slack](https://img.shields.io/badge/slack-megaease-brightgreen?logo=slack)](https://join.slack.com/t/openmegaease/shared_invite/zt-upo7v306-lYPHvVwKnvwlqR0Zl2vveA)
-
-
-EaseProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go.
+GuardianProbe is a simple, standalone, and lightweight tool that can do health/status checking, written in Go.
 
 ![](docs/overview.png)
 
@@ -31,11 +24,11 @@ EaseProbe is a simple, standalone, and lightweight tool that can do health/statu
 
 # 1. Introduction
 
-EaseProbe is designed to do three kinds of work - **Probe**, **Notify**, and **Report**.
+GuardianProbe is designed to do three kinds of work - **Probe**, **Notify**, and **Report**.
 
 ## 1.1 Probe
 
-EaseProbe supports a variety of methods to perform its probes such as:
+GuardianProbe supports a variety of methods to perform its probes such as:
 
 - **HTTP**. Checking the HTTP status code, Support mTLS, HTTP Basic Auth, setting Request Header/Body, and XPath response evaluation. ( [HTTP Probe Manual](./docs/Manual.md#12-http) )
 - **TCP**. Check whether a TCP connection can be established or not. ( [TCP Probe Manual](./docs/Manual.md#13-tcp) )
@@ -55,7 +48,7 @@ EaseProbe supports a variety of methods to perform its probes such as:
 
 ## 1.2 Notification
 
-EaseProbe supports notification delivery to the following:
+GuardianProbe supports notification delivery to the following:
 
 - **Slack**. Using Slack Webhook for notification delivery
 - **Discord**. Using Discord Webhook for notification delivery
@@ -84,23 +77,23 @@ Check the [Notification Manual](./docs/Manual.md#2-notification) to see how to c
 
 ## 1.3 Report & Metrics
 
-EaseProbe supports the following report and metrics:
+GuardianProbe supports the following report and metrics:
 
-- **SLA Report Notify**. EaseProbe would send the daily, weekly, or monthly SLA report using the defined **`notify:`** methods.
-- **SLA Live Report**. The EaseProbe would listen on the `0.0.0.0:8181` port by default. By accessing this service you will be provided with a live SLA report either as HTML at `http://localhost:8181/` or as JSON at `http://localhost:8181/api/v1/sla`
+- **SLA Report Notify**. GuardianProbe would send the daily, weekly, or monthly SLA report using the defined **`notify:`** methods.
+- **SLA Live Report**. The GuardianProbe would listen on the `0.0.0.0:8181` port by default. By accessing this service you will be provided with a live SLA report either as HTML at `http://localhost:8181/` or as JSON at `http://localhost:8181/api/v1/sla`
 - **SLA Data Persistence**. The SLA data will be persisted in `$CWD/data/data.yaml` by default. You can configure this path by editing the `settings` section of your configuration file.
 
 For more information, please check the [Global Setting Configuration](./docs/Manual.md#73-global-setting-configuration)
 
-- **Prometheus Metrics**. The EaseProbe would listen on the `8181` port by default. By accessing this service you will be provided with Prometheus metrics at `http://easeprobe:8181/metrics`.
+- **Prometheus Metrics**. The GuardianProbe would listen on the `8181` port by default. By accessing this service you will be provided with Prometheus metrics at `http://easeprobe:8181/metrics`.
 
 The metrics are prefixed with `easeprobe_` and are documented in [Prometheus Metrics Exporter](./docs/Manual.md#6-prometheus-metrics-exporter)
 
 # 2. Getting Started
 
-You can get started with EaseProbe, by any of the following methods:
-* Download the release for your platform from https://github.com/megaease/easeprobe/releases
-* Use the available EaseProbe docker image `docker run -it megaease/easeprobe`
+You can get started with GuardianProbe, by any of the following methods:
+* Download the release for your platform from https://github.com/o2ip/guardianprobe/releases
+* Use the available GuardianProbe docker image `docker run -it o2ip/guardianprobe`
 * Build `easeprobe` from sources
 
 ## 2.1 Build
@@ -114,16 +107,16 @@ $ make
 ```
 ## 2.2 Configure
 
-Read the [User Manual](./docs/Manual.md) for detailed instructions on how to configure all EaseProbe parameters.
+Read the [User Manual](./docs/Manual.md) for detailed instructions on how to configure all GuardianProbe parameters.
 
-Create a configuration file (eg. `$CWD/config.yaml`) using the configuration template at [./resources/config.yaml](https://raw.githubusercontent.com/megaease/easeprobe/main/resources/config.yaml), which includes the complete list of configuration parameters.
+Create a configuration file (eg. `$CWD/config.yaml`) using the configuration template at [./resources/config.yaml](https://raw.githubusercontent.com/o2ip/guardianprobe/main/resources/config.yaml), which includes the complete list of configuration parameters.
 
 The following simple configuration example can be used to get started:
 
 ```YAML
 http: # http probes
-  - name: EaseProbe Github
-    url: https://github.com/megaease/easeprobe
+  - name: GuardianProbe Github
+    url: https://github.com/o2ip/guardianprobe
 notify:
   log:
     - name: log file # local log file
@@ -134,11 +127,11 @@ settings:
     interval: 1m # probe every minute for all probes
 ```
 
-You can check the [EaseProbe JSON Schema](./docs/Manual.md#81-easeprobe-json-schema) section to use a JSON Scheme file to make your life easier when you edit the configuration file.
+You can check the [GuardianProbe JSON Schema](./docs/Manual.md#81-easeprobe-json-schema) section to use a JSON Scheme file to make your life easier when you edit the configuration file.
 
 ## 2.3 Run
 
-You can run the following command to start EaseProbe once built
+You can run the following command to start GuardianProbe once built
 
 ```shell
 $ build/bin/easeprobe -f config.yaml
@@ -148,7 +141,7 @@ $ build/bin/easeprobe -f config.yaml
 
 # 3. Deployment
 
-EaseProbe can be deployed by Systemd, Docker, Docker-Compose, & Kubernetes.
+GuardianProbe can be deployed by Systemd, Docker, Docker-Compose, & Kubernetes.
 
 You can find the details in [Deployment Guide](./docs/Deployment.md)
 
@@ -158,7 +151,7 @@ For detailed instructions and features please refer to the [User Manual](./docs/
 
 # 5. Benchmark
 
-We have performed an extensive benchmark on EaseProbe. For the benchmark results please refer to - [Benchmark Report](./docs/Benchmark.md)
+We have performed an extensive benchmark on GuardianProbe. For the benchmark results please refer to - [Benchmark Report](./docs/Benchmark.md)
 
 # 6. Contributing
 
@@ -171,4 +164,4 @@ If you're interested in contributing to the project, please spare a moment to re
 
 # 8. License
 
-EaseProbe is under the Apache 2.0 license. See the [LICENSE](./LICENSE) file for details.
+GuardianProbe is under the Apache 2.0 license. See the [LICENSE](./LICENSE) file for details.

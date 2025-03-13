@@ -31,19 +31,19 @@ import (
 	"strings"
 	"time"
 
-	"github.com/megaease/easeprobe/channel"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/client"
-	"github.com/megaease/easeprobe/probe/host"
-	"github.com/megaease/easeprobe/probe/http"
-	"github.com/megaease/easeprobe/probe/ping"
-	"github.com/megaease/easeprobe/probe/shell"
-	"github.com/megaease/easeprobe/probe/ssh"
-	"github.com/megaease/easeprobe/probe/tcp"
-	"github.com/megaease/easeprobe/probe/tls"
-	"github.com/megaease/easeprobe/probe/websocket"
+	"github.com/o2ip/guardianprobe/channel"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/client"
+	"github.com/o2ip/guardianprobe/probe/host"
+	"github.com/o2ip/guardianprobe/probe/http"
+	"github.com/o2ip/guardianprobe/probe/ping"
+	"github.com/o2ip/guardianprobe/probe/shell"
+	"github.com/o2ip/guardianprobe/probe/ssh"
+	"github.com/o2ip/guardianprobe/probe/tcp"
+	"github.com/o2ip/guardianprobe/probe/tls"
+	"github.com/o2ip/guardianprobe/probe/websocket"
 
 	"github.com/invopop/jsonschema"
 	log "github.com/sirupsen/logrus"
@@ -123,23 +123,23 @@ type HTTPServer struct {
 	AccessLog       Log           `yaml:"log" json:"log,omitempty" jsonschema:"title=Access Log,description=access log of the http server"`
 }
 
-// Settings is the EaseProbe configuration
+// Settings is the GuardianProbe configuration
 type Settings struct {
-	Name       string     `yaml:"name" json:"name,omitempty" jsonschema:"title=EaseProbe Name,description=The name of the EaseProbe instance,default=EaseProbe"`
-	IconURL    string     `yaml:"icon" json:"icon,omitempty" jsonschema:"title=Icon URL,description=The URL of the icon of the EaseProbe instance"`
-	PIDFile    string     `yaml:"pid" json:"pid,omitempty" jsonschema:"title=PID File,description=The PID file of the EaseProbe instance ('' or '-' means no PID file)"`
-	Log        Log        `yaml:"log" json:"log,omitempty" jsonschema:"title=EaseProbe Log,description=The log settings of the EaseProbe instance"`
-	TimeFormat string     `yaml:"timeformat" json:"timeformat,omitempty" jsonschema:"title=Time Format,description=The time format of the EaseProbe instance,default=2006-01-02 15:04:05Z07:00"`
-	TimeZone   string     `yaml:"timezone" json:"timezone,omitempty" jsonschema:"title=Time Zone,description=The time zone of the EaseProbe instance,example=Asia/Shanghai,example=Europe/Berlin,default=UTC"`
-	Probe      Probe      `yaml:"probe" json:"probe,omitempty" jsonschema:"title=Probe Settings,description=The global probe settings of the EaseProbe instance"`
-	Notify     Notify     `yaml:"notify" json:"notify,omitempty" jsonschema:"title=Notify Settings,description=The global notify settings of the EaseProbe instance"`
-	SLAReport  SLAReport  `yaml:"sla" json:"sla,omitempty" jsonschema:"title=SLA Report Settings,description=The SLA report settings of the EaseProbe instance"`
-	HTTPServer HTTPServer `yaml:"http" json:"http,omitempty" jsonschema:"title=HTTP Server Settings,description=The HTTP server settings of the EaseProbe instance"`
+	Name       string     `yaml:"name" json:"name,omitempty" jsonschema:"title=GuardianProbe Name,description=The name of the GuardianProbe instance,default=GuardianProbe"`
+	IconURL    string     `yaml:"icon" json:"icon,omitempty" jsonschema:"title=Icon URL,description=The URL of the icon of the GuardianProbe instance"`
+	PIDFile    string     `yaml:"pid" json:"pid,omitempty" jsonschema:"title=PID File,description=The PID file of the GuardianProbe instance ('' or '-' means no PID file)"`
+	Log        Log        `yaml:"log" json:"log,omitempty" jsonschema:"title=GuardianProbe Log,description=The log settings of the GuardianProbe instance"`
+	TimeFormat string     `yaml:"timeformat" json:"timeformat,omitempty" jsonschema:"title=Time Format,description=The time format of the GuardianProbe instance,default=2006-01-02 15:04:05Z07:00"`
+	TimeZone   string     `yaml:"timezone" json:"timezone,omitempty" jsonschema:"title=Time Zone,description=The time zone of the GuardianProbe instance,example=Asia/Shanghai,example=Europe/Berlin,default=UTC"`
+	Probe      Probe      `yaml:"probe" json:"probe,omitempty" jsonschema:"title=Probe Settings,description=The global probe settings of the GuardianProbe instance"`
+	Notify     Notify     `yaml:"notify" json:"notify,omitempty" jsonschema:"title=Notify Settings,description=The global notify settings of the GuardianProbe instance"`
+	SLAReport  SLAReport  `yaml:"sla" json:"sla,omitempty" jsonschema:"title=SLA Report Settings,description=The SLA report settings of the GuardianProbe instance"`
+	HTTPServer HTTPServer `yaml:"http" json:"http,omitempty" jsonschema:"title=HTTP Server Settings,description=The HTTP server settings of the GuardianProbe instance"`
 }
 
 // Conf is Probe configuration
 type Conf struct {
-	Version   string                `yaml:"version" json:"version,omitempty" jsonschema:"title=Version,description=Version of the EaseProbe configuration"`
+	Version   string                `yaml:"version" json:"version,omitempty" jsonschema:"title=Version,description=Version of the GuardianProbe configuration"`
 	HTTP      []http.HTTP           `yaml:"http" json:"http,omitempty" jsonschema:"title=HTTP Probe,description=HTTP Probe Configuration"`
 	TCP       []tcp.TCP             `yaml:"tcp" json:"tcp,omitempty" jsonschema:"title=TCP Probe,description=TCP Probe Configuration"`
 	Shell     []shell.Shell         `yaml:"shell" json:"shell,omitempty" jsonschema:"title=Shell Probe,description=Shell Probe Configuration"`
@@ -150,7 +150,7 @@ type Conf struct {
 	Ping      []ping.Ping           `yaml:"ping" json:"ping,omitempty" jsonschema:"title=Ping Probe,description=Ping Probe Configuration"`
 	WebSocket []websocket.WebSocket `yaml:"websocket" json:"websocket,omitempty" jsonschema:"title=WebSocket Probe,description=WebSocket Probe Configuration"`
 	Notify    notify.Config         `yaml:"notify" json:"notify,omitempty" jsonschema:"title=Notification,description=Notification Configuration"`
-	Settings  Settings              `yaml:"settings" json:"settings,omitempty" jsonschema:"title=Global Settings,description=EaseProbe Global configuration"`
+	Settings  Settings              `yaml:"settings" json:"settings,omitempty" jsonschema:"title=Global Settings,description=GuardianProbe Global configuration"`
 }
 
 // JSONSchema return the json schema of the configuration
@@ -168,7 +168,7 @@ func JSONSchema() (string, error) {
 			v := reflect.New(t)
 			vt := v.Elem().Type()
 			name = vt.PkgPath() + "/" + vt.Name()
-			name = strings.TrimPrefix(name, "github.com/megaease/easeprobe/")
+			name = strings.TrimPrefix(name, "github.com/o2ip/guardianprobe/")
 			name = strings.ReplaceAll(name, "/", "_")
 			log.Debugf("The struct name has been replaced [%s ==> %s]", t.Name(), name)
 		}
@@ -354,7 +354,7 @@ func New(conf *string) (*Conf, error) {
 
 	// Initialization
 	c.Settings.Log.InitLog(nil)
-	global.InitEaseProbeWithTime(c.Settings.Name, c.Settings.IconURL,
+	global.InitGuardianProbeWithTime(c.Settings.Name, c.Settings.IconURL,
 		c.Settings.TimeFormat, c.Settings.TimeZone)
 	c.initData()
 

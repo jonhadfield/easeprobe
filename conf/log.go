@@ -21,7 +21,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 	"gopkg.in/natefinch/lumberjack.v2"
 
 	log "github.com/sirupsen/logrus"
@@ -129,7 +129,7 @@ func (l *Log) Open() {
 			Filename:   l.File,
 			MaxSize:    l.MaxSize, // megabytes
 			MaxBackups: l.MaxBackups,
-			MaxAge:     l.MaxAge, //days
+			MaxAge:     l.MaxAge, // days
 			Compress:   l.Compress,
 		}
 		return
@@ -192,7 +192,7 @@ func (l *Log) ConfigureLogger() {
 		l.Logger.SetOutput(l.Writer)
 		l.Logger.SetLevel(l.Level.GetLevel())
 		l.Logger.SetFormatter(&log.TextFormatter{FullTimestamp: true})
-	} else { //system-wide log
+	} else { // system-wide log
 		log.SetOutput(l.Writer)
 		log.SetLevel(l.Level.GetLevel())
 		log.SetFormatter(&log.TextFormatter{FullTimestamp: true})

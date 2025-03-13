@@ -25,7 +25,7 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
+	"github.com/o2ip/guardianprobe/global"
 	"github.com/stretchr/testify/assert"
 )
 

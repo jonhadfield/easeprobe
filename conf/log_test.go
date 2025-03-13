@@ -129,7 +129,7 @@ func TestAppLog(t *testing.T) {
 }
 
 func TestLog(t *testing.T) {
-	testLogs(t, "easeprobe", true, false, true)
+	testLogs(t, "guardianprobe", true, false, true)
 }
 
 func TestNonSelfRotateLog(t *testing.T) {

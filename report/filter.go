@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -156,7 +156,7 @@ func (f *SLAFilter) Filter(probers []probe.Prober) []probe.Prober {
 		if f.Message != "" && !strings.Contains(r.Message, f.Message) {
 			continue
 		}
-		//if the SLA is not right then ignore it
+		// if the SLA is not right then ignore it
 		percent := r.SLAPercent()
 		if percent < f.SLAGreater || percent > f.SLALess {
 			continue

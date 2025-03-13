@@ -24,9 +24,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // Load is the load average of the host
@@ -129,7 +129,7 @@ func (l *Load) CheckThreshold() (bool, string) {
 
 // CreateMetrics create the load average metrics
 func (l *Load) CreateMetrics(subsystem, name string) {
-	namespace := global.GetEaseProbe().Name
+	namespace := global.GetGuardianProbe().Name
 	l.metrics = metric.NewGauge(namespace, subsystem, name, "load",
 		"Load Average", []string{"host", "state"}, l.Labels)
 }

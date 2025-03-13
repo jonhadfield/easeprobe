@@ -46,11 +46,11 @@ func init() {
 
 // InitEaseProbe the EaseProbe
 func InitEaseProbe(name, icon string) {
-	InitEaseProbeWithTime(name, icon, DefaultTimeFormat, DefaultTimeZone)
+	InitGuardianProbeWithTime(name, icon, DefaultTimeFormat, DefaultTimeZone)
 }
 
-// InitEaseProbeWithTime init the EaseProbe with time
-func InitEaseProbeWithTime(name, icon, tf, tz string) {
+// InitGuardianProbeWithTime init the EaseProbe with time
+func InitGuardianProbeWithTime(name, icon, tf, tz string) {
 	host, err := os.Hostname()
 	if err != nil {
 		log.Errorf("Get Hostname Failed: %s", err)
@@ -66,8 +66,8 @@ func InitEaseProbeWithTime(name, icon, tf, tz string) {
 	SetTimeFormat(tf)
 }
 
-// GetEaseProbe return the EaseProbe
-func GetEaseProbe() *EaseProbe {
+// GetGuardianProbe return the EaseProbe
+func GetGuardianProbe() *EaseProbe {
 	if easeProbe == nil {
 		InitEaseProbe(DefaultProg, DefaultIconURL)
 	}
@@ -76,7 +76,7 @@ func GetEaseProbe() *EaseProbe {
 
 // GetTimeFormat return the time format
 func GetTimeFormat() string {
-	e := GetEaseProbe()
+	e := GetGuardianProbe()
 	return e.TimeFormat
 }
 
@@ -85,13 +85,13 @@ func SetTimeFormat(tf string) {
 	if strings.TrimSpace(tf) == "" {
 		tf = DefaultTimeFormat
 	}
-	e := GetEaseProbe()
+	e := GetGuardianProbe()
 	e.TimeFormat = tf
 }
 
 // GetTimeLocation return the time zone
 func GetTimeLocation() *time.Location {
-	e := GetEaseProbe()
+	e := GetGuardianProbe()
 	return e.TimeLoc
 }
 
@@ -103,7 +103,7 @@ func SetTimeZone(tz string) {
 		tz = "UTC"
 		loc = time.UTC
 	}
-	e := GetEaseProbe()
+	e := GetGuardianProbe()
 	e.TimeZone = tz
 	e.TimeLoc = loc
 }
@@ -111,6 +111,6 @@ func SetTimeZone(tz string) {
 // FooterString return the footer string
 // e.g. "EaseProbe v1.0.0 @ localhost"
 func FooterString() string {
-	e := GetEaseProbe()
+	e := GetGuardianProbe()
 	return e.Name + " " + e.Version + " @ " + e.Host
 }

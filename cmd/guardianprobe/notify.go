@@ -18,9 +18,9 @@
 package main
 
 import (
-	"github.com/megaease/easeprobe/conf"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify"
+	"github.com/o2ip/guardianprobe/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify"
 	log "github.com/sirupsen/logrus"
 )
 

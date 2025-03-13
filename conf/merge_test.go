@@ -174,7 +174,7 @@ notify:
 func TestSettingsMerge(t *testing.T) {
 	into := `
 settings:
-  name: easeprobe
+  name: guardianprobe
   sla:
     schedule: "daily"
     time: "00:00"
@@ -184,7 +184,7 @@ settings:
       interval: 10`
 	from := `
 settings:
-  name: easeprobe_from
+  name: guardianprobe_from
   probe:
     timeout: 10s
     interval: 30s
@@ -192,7 +192,7 @@ settings:
     schedule: "weekly"`
 	expected := `
 settings:
-  name: easeprobe_from
+  name: guardianprobe_from
   probe:
     timeout: 10s
     interval: 30s

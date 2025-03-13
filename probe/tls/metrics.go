@@ -21,8 +21,8 @@ import (
 	"crypto/tls"
 	"time"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
 	"github.com/prometheus/client_golang/prometheus"
 )
 
@@ -34,7 +34,7 @@ type metrics struct {
 
 // newMetrics create the HTTP metrics
 func newMetrics(subsystem, name string, constLabels prometheus.Labels) *metrics {
-	namespace := global.GetEaseProbe().Name
+	namespace := global.GetGuardianProbe().Name
 	return &metrics{
 		EarliestCertExpiry: metric.NewGauge(namespace, subsystem, name, "earliest_cert_expiry",
 			"last TLS chain expiry in timestamp seconds", []string{"endpoint"}, constLabels),

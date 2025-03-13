@@ -44,9 +44,9 @@ func TestAll(t *testing.T) {
 		t.Errorf("LoadFromFile(-) error: %s", err)
 	}
 
-	filename := "/tmp/easeprobe/data.yaml"
-	if err := os.MkdirAll("/tmp/easeprobe", 0755); err != nil {
-		t.Errorf("Mkdirall(\"/tmp/easeprobe\") error: %v", err)
+	filename := "/tmp/guardianprobe/data.yaml"
+	if err := os.MkdirAll("/tmp/guardianprobe", 0755); err != nil {
+		t.Errorf("Mkdirall(\"/tmp/guardianprobe\") error: %v", err)
 	}
 
 	if err := SaveDataToFile(filename); err != nil {
@@ -61,7 +61,7 @@ func TestAll(t *testing.T) {
 		t.Errorf("LoadFromFile(\"%s\") = %v, expected %v", filename, resultData["Test1 Name"], r[0])
 	}
 
-	if err := os.RemoveAll("/tmp/easeprobe"); err != nil {
-		t.Errorf("RemoveAll(\"/tmp/easeprobe\") = %v, expected nil", err)
+	if err := os.RemoveAll("/tmp/guardianprobe"); err != nil {
+		t.Errorf("RemoveAll(\"/tmp/guardianprobe\") = %v, expected nil", err)
 	}
 }

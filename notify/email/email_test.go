@@ -23,8 +23,8 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/report"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/gomail.v2"
 )
@@ -45,7 +45,7 @@ func assertError(t *testing.T, err error, msg string) {
 
 func TestEmail(t *testing.T) {
 	conf := &NotifyConfig{}
-	conf.From = "easeprobe@megaease.com"
+	conf.From = "test@virginmediao2.co.uk"
 	err := conf.Config(global.NotifySettings{})
 	assert.NoError(t, err)
 	assert.Equal(t, report.HTML, conf.NotifyFormat)

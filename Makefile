@@ -23,14 +23,14 @@ endif
 
 # go source files, ignore vendor directory
 SOURCE = $(shell find ${MKFILE_DIR} -type f -name "*.go")
-TARGET = ${RELEASE_DIR}/easeprobe
+TARGET = ${RELEASE_DIR}/guardianprobe
 
 all: ${TARGET}
 
 ${TARGET}: ${SOURCE}
 	mkdir -p ${RELEASE_DIR}
 	go mod tidy
-	CGO_ENABLED=0 go build -a -ldflags "-s -w -extldflags -static -X ${GO_MOD}/global.Ver=${RELEASE_VER}" -o ${TARGET} ${GO_MOD}/cmd/easeprobe
+	CGO_ENABLED=0 go build -a -ldflags "-s -w -extldflags -static -X ${GO_MOD}/global.Ver=${RELEASE_VER}" -o ${TARGET} ${GO_MOD}/cmd/guardianprobe
 
 build: all
 
@@ -38,7 +38,7 @@ test:
 	go test -gcflags=-l -cover -race ${TEST_FLAGS} -v ./...
 
 docker:
-	sudo DOCKER_BUILDKIT=1 docker build -t megaease/easeprobe -f ${MKFILE_DIR}/resources/Dockerfile ${MKFILE_DIR}
+	sudo DOCKER_BUILDKIT=1 docker build -t TBC/guardianprobe -f ${MKFILE_DIR}/resources/Dockerfile ${MKFILE_DIR}
 
 clean:
 	@rm -rf ${MKFILE_DIR}/build

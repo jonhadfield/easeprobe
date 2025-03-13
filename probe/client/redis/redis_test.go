@@ -26,8 +26,8 @@ import (
 
 	"bou.ke/monkey"
 	"github.com/go-redis/redis/v8"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	"github.com/stretchr/testify/assert"
 )
 

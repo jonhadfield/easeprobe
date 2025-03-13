@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-// Package web is the web server of easeprobe.
+// Package web is the web server of guardianprobe.
 package web
 
 import (
@@ -30,10 +30,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/megaease/easeprobe/conf"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/report"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"github.com/go-chi/chi/v5"

@@ -28,12 +28,12 @@ import (
 )
 
 func TestEaseProbe(t *testing.T) {
-	e := GetEaseProbe()
+	e := GetGuardianProbe()
 	assert.Equal(t, DefaultProg, e.Name)
 	assert.Equal(t, DefaultIconURL, e.IconURL)
 
 	InitEaseProbe("test", "icon")
-	e = GetEaseProbe()
+	e = GetGuardianProbe()
 	assert.Equal(t, "test", e.Name)
 	assert.Equal(t, "icon", e.IconURL)
 	assert.Equal(t, Ver, e.Version)
@@ -58,7 +58,7 @@ func TestEaseProbeFail(t *testing.T) {
 		return "", fmt.Errorf("error")
 	})
 	InitEaseProbe("test", "icon")
-	e := GetEaseProbe()
+	e := GetGuardianProbe()
 	assert.Equal(t, "unknown", e.Host)
 
 	monkey.Unpatch(os.Hostname)
@@ -73,8 +73,8 @@ func TestEaseProbeTime(t *testing.T) {
 	tz := GetTimeLocation()
 	assert.Equal(t, DefaultTimeZone, tz.String())
 
-	InitEaseProbeWithTime("test", "icon", "2006-01-02 15:04:05 Z07:00", "Asia/Shanghai")
-	e := GetEaseProbe()
+	InitGuardianProbeWithTime("test", "icon", "2006-01-02 15:04:05 Z07:00", "Asia/Shanghai")
+	e := GetGuardianProbe()
 	assert.Equal(t, "Asia/Shanghai", e.TimeZone)
 	assert.Equal(t, "2006-01-02 15:04:05 Z07:00", e.TimeFormat)
 	assert.Equal(t, "Asia/Shanghai", e.TimeLoc.String())

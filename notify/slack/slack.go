@@ -24,9 +24,9 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify/base"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify/base"
+	"github.com/o2ip/guardianprobe/report"
 	log "github.com/sirupsen/logrus"
 )
 

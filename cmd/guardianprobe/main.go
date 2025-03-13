@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-// Package main is the entry point for the easeprobe command.
+// Package main is the entry point for the guardianprobe command.
 package main
 
 import (
@@ -29,12 +29,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/megaease/easeprobe/channel"
-	"github.com/megaease/easeprobe/conf"
-	"github.com/megaease/easeprobe/daemon"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/web"
+	"github.com/o2ip/guardianprobe/channel"
+	"github.com/o2ip/guardianprobe/conf"
+	"github.com/o2ip/guardianprobe/daemon"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/web"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -132,7 +132,7 @@ func main() {
 	// //////////////////////////////////////////////////////////////////////////
 	//                          Start the HTTP Server                         //
 	// //////////////////////////////////////////////////////////////////////////
-	// if error happens, the EaseProbe will exit
+	// if error happens, the GuardianProbe will exit
 	web.Server()
 
 	// //////////////////////////////////////////////////////////////////////////
@@ -158,7 +158,7 @@ func main() {
 	configChannels(probers, notifies)
 
 	// //////////////////////////////////////////////////////////////////////////
-	//                          Start the EaseProbe                           //
+	//                          Start the GuardianProbe                           //
 	// //////////////////////////////////////////////////////////////////////////
 
 	// wait group for probers

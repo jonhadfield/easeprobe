@@ -12,7 +12,7 @@
     - [4.4  With 10,000 Probers](#44--with-10000-probers)
     - [4.5 With 20,000 Probers](#45-with-20000-probers)
 
-The document is the performance test report for EaseProbe.
+The document is the performance test report for GuardianProbe.
 
 ## 1. Test Environment
 
@@ -37,20 +37,20 @@ The document is the performance test report for EaseProbe.
     > Note: the DNS server `1.1.1.1` would be a problem if we query DNS too many, `1.1.1.1` would block the DNS query.
 
 - **Build**: the following PRs are needed for this test and we must ensure they are included (already merged in `main`):
-  -  [PR #157](https://github.com/megaease/easeprobe/pull/157) - Equally distributing start the probers.
+  -  [PR #157](https://github.com/o2ip/guardianprobe/pull/157) - Equally distributing start the probers.
      - without this PR, each prober would start to work a same time.
      - with it the prober would start in evenly distribute with in 1 minute
-  -  [PR #159](https://github.com/megaease/easeprobe/pull/159) - Set the `SO_LINGER=0` to tcp, http, tls, ssh probe
-     -  without this PR, EaseProbe leave a TIME_WAIT tcp connection.
-     -  with this PR, EaseProbe will close the TIME_WAIT tcp connection.
-  -  [PR #162](https://github.com/megaease/easeprobe/pull/162) - Fix the concurrent map access crashing problem
-     -  without this PR, EaseProbe will crash during the test.
-     -  with this PR, EaseProbe will not crash during the test.
+  -  [PR #159](https://github.com/o2ip/guardianprobe/pull/159) - Set the `SO_LINGER=0` to tcp, http, tls, ssh probe
+     -  without this PR, GuardianProbe leave a TIME_WAIT tcp connection.
+     -  with this PR, GuardianProbe will close the TIME_WAIT tcp connection.
+  -  [PR #162](https://github.com/o2ip/guardianprobe/pull/162) - Fix the concurrent map access crashing problem
+     -  without this PR, GuardianProbe will crash during the test.
+     -  with this PR, GuardianProbe will not crash during the test.
 
 
 ## 2. Test Cases
 
-Only ONE Single EaseProbe Process for this performance test.
+Only ONE Single GuardianProbe Process for this performance test.
 
 - Only test HTTPS and TCP probe
 - with 100, 1000, 2000, 5000 & 10,0000 probers
@@ -66,7 +66,7 @@ Using the the following command to observe the performance:
 
 The test data is taken from the top 1M websites (https://majestic.com/reports/majestic-million)
 
-The test data can be found under the [EaseProbe Test](../resources/test/) folder.
+The test data can be found under the [GuardianProbe Test](../resources/test/) folder.
 
 ## 4. Test Result
 
@@ -145,7 +145,7 @@ The test data can be found under the [EaseProbe Test](../resources/test/) folder
 | https | 30s      |   30.7%    |   570MB           |    0       |
 | https | 60s      |   17.8%    |   450MB           |    0       |
 
-> Note: https with 5s interval reaches the CPU limitation for all 8 CPU cores, the memory usage is abnormal as well, EaseProbe does not work properly (there are thousands of `SYNC_SENT` and `CLOSE_WAIT `).
+> Note: https with 5s interval reaches the CPU limitation for all 8 CPU cores, the memory usage is abnormal as well, GuardianProbe does not work properly (there are thousands of `SYNC_SENT` and `CLOSE_WAIT `).
 
 | Kind  | Interval | CPU Usage | Memory Usage (RES) | # TIME_WAIT |
 | ----- | :------: | :--------: | :---------------: | :---------: |

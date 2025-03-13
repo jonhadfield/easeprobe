@@ -24,8 +24,8 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe/client/conf"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe/client/conf"
 	"github.com/segmentio/kafka-go"
 	"github.com/stretchr/testify/assert"
 )
@@ -80,7 +80,7 @@ func TestKafkaFailed(t *testing.T) {
 	}
 
 	kaf, err := New(conf)
-	//TLS failed
+	// TLS failed
 	assert.Nil(t, kaf)
 	assert.NotNil(t, err)
 

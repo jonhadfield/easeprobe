@@ -25,7 +25,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/megaease/easeprobe/notify/sms/conf"
+	"github.com/o2ip/guardianprobe/notify/sms/conf"
 	log "github.com/sirupsen/logrus"
 )
 

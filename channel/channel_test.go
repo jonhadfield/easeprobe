@@ -20,8 +20,8 @@ package channel
 import (
 	"testing"
 
-	"github.com/megaease/easeprobe/notify"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/notify"
+	"github.com/o2ip/guardianprobe/probe"
 	"github.com/stretchr/testify/assert"
 )
 

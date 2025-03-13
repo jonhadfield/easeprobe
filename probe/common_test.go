@@ -28,46 +28,46 @@ func TestCheckText(t *testing.T) {
 
 	tc.Contain = "hello"
 	tc.NotContain = "bad"
-	err := tc.Check("easeprobe hello world")
+	err := tc.Check("guardianprobe hello world")
 	assert.Nil(t, err)
 
 	tc.Contain = "hello"
 	tc.NotContain = "world"
-	err = tc.Check("easeprobe hello world")
+	err = tc.Check("guardianprobe hello world")
 	assert.NotNil(t, err)
 
 	tc.Contain = ""
 	tc.NotContain = "world"
-	err = tc.Check("easeprobe hello world")
+	err = tc.Check("guardianprobe hello world")
 	assert.NotNil(t, err)
 
 	tc.Contain = "hello"
 	tc.NotContain = ""
-	err = tc.Check("easeprobe hello world")
+	err = tc.Check("guardianprobe hello world")
 	assert.Nil(t, err)
 
 	tc.Contain = "good"
 	tc.NotContain = ""
-	err = tc.Check("easeprobe hello world")
+	err = tc.Check("guardianprobe hello world")
 	assert.NotNil(t, err)
 
 	tc.Contain = ""
 	tc.NotContain = "bad"
-	err = tc.Check("easeprobe hello world")
+	err = tc.Check("guardianprobe hello world")
 	assert.Nil(t, err)
 
 	tc.Contain = "good"
 	tc.NotContain = "bad"
-	err = tc.Check("easeprobe hello world")
+	err = tc.Check("guardianprobe hello world")
 	assert.NotNil(t, err)
 
 	tc = TextChecker{
 		NotContain: "hello",
 		WithOutput: true,
 	}
-	err = tc.Check("easeprobe hello world")
+	err = tc.Check("guardianprobe hello world")
 	assert.NotNil(t, err)
-	assert.Contains(t, err.Error(), "easeprobe")
+	assert.Contains(t, err.Error(), "guardianprobe")
 }
 
 func testRegExpHelper(t *testing.T, regExp string, str string, match bool) {
@@ -97,20 +97,20 @@ func TestCheckRegExp(t *testing.T) {
 	testRegExpHelper(t, word, "word word word", false)
 
 	time := "[0-9]?[0-9]:[0-9][0-9]"
-	testRegExpHelper(t, time, "easeprobe hello world 12:34", true)
-	testRegExpHelper(t, time, "easeprobe hello world 1234", false)
+	testRegExpHelper(t, time, "guardianprobe hello world 12:34", true)
+	testRegExpHelper(t, time, "guardianprobe hello world 1234", false)
 
 	html := `<\/?[\w\s]*>|<.+[\W]>`
 	testRegExpHelper(t, html, "<p>test hello world </p>", true)
 	testRegExpHelper(t, html, "test hello world", false)
 
 	or := `word1|word2`
-	testRegExpHelper(t, or, "word1 easeprobe word2", true)
-	testRegExpHelper(t, or, "word2 easeprobe word1", true)
-	testRegExpHelper(t, or, "word3 easeprobe word1", true)
-	testRegExpHelper(t, or, "word2 easeprobe word3", true)
-	testRegExpHelper(t, or, "word easeprobe word3", false)
-	testRegExpHelper(t, or, "word easeprobe hello world", false)
+	testRegExpHelper(t, or, "word1 guardianprobe word2", true)
+	testRegExpHelper(t, or, "word2 guardianprobe word1", true)
+	testRegExpHelper(t, or, "word3 guardianprobe word1", true)
+	testRegExpHelper(t, or, "word2 guardianprobe word3", true)
+	testRegExpHelper(t, or, "word guardianprobe word3", false)
+	testRegExpHelper(t, or, "word guardianprobe hello world", false)
 
 	unsupported := "(?=.*word1)(?=.*word2)"
 	tc := TextChecker{RegExp: true}

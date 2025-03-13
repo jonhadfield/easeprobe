@@ -18,10 +18,10 @@
 package main
 
 import (
-	"github.com/megaease/easeprobe/channel"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify"
-	"github.com/megaease/easeprobe/probe"
+	"github.com/o2ip/guardianprobe/channel"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify"
+	"github.com/o2ip/guardianprobe/probe"
 	log "github.com/sirupsen/logrus"
 )
 

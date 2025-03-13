@@ -21,18 +21,18 @@ package sms
 import (
 	"errors"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/notify/sms/conf"
-	"github.com/megaease/easeprobe/notify/sms/nexmo"
-	"github.com/megaease/easeprobe/notify/sms/twilio"
-	"github.com/megaease/easeprobe/notify/sms/yunpian"
-	"github.com/megaease/easeprobe/report"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/notify/sms/conf"
+	"github.com/o2ip/guardianprobe/notify/sms/nexmo"
+	"github.com/o2ip/guardianprobe/notify/sms/twilio"
+	"github.com/o2ip/guardianprobe/notify/sms/yunpian"
+	"github.com/o2ip/guardianprobe/report"
 	log "github.com/sirupsen/logrus"
 )
 
 // NotifyConfig implements the structure of Sms
 type NotifyConfig struct {
-	//Embed structure
+	// Embed structure
 	conf.Options `yaml:",inline"`
 
 	Provider conf.Provider `yaml:"-" json:"-"`

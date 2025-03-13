@@ -25,9 +25,9 @@ import (
 	"testing"
 
 	"bou.ke/monkey"
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/probe"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/probe"
+	"github.com/o2ip/guardianprobe/probe/base"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -95,7 +95,7 @@ func TestShell(t *testing.T) {
 
 	// run command error
 	monkey.UnpatchAll()
-	//no exit code
+	// no exit code
 	status, message = s.DoProbe()
 	assert.False(t, status)
 	assert.Contains(t, message, "ExitCode(null)")

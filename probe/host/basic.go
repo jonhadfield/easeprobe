@@ -22,9 +22,9 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/megaease/easeprobe/global"
-	"github.com/megaease/easeprobe/metric"
-	"github.com/megaease/easeprobe/probe/base"
+	"github.com/o2ip/guardianprobe/global"
+	"github.com/o2ip/guardianprobe/metric"
+	"github.com/o2ip/guardianprobe/probe/base"
 )
 
 // Basic is the basic information of the host
@@ -87,7 +87,7 @@ func (b *Basic) CheckThreshold() (bool, string) {
 
 // CreateMetrics create the cpu metrics
 func (b *Basic) CreateMetrics(subsystem, name string) {
-	namespace := global.GetEaseProbe().Name
+	namespace := global.GetGuardianProbe().Name
 	b.metrics = metric.NewGauge(namespace, subsystem, name, "basic",
 		"Basic Host Information", []string{"host", "state"}, b.Labels)
 }
