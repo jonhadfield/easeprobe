@@ -1,4 +1,4 @@
-# EaseProbe Test
+# GuardianProbe Test
 
 ## 1 Benchmark Test
 
@@ -25,7 +25,7 @@ these files would be generated
   - `config.http.10k.yaml`
   - `config.http.20k.yaml`
 
-### 1.2. Run the EaseProbe
+### 1.2. Run the GuardianProbe
 
 You can edit the config file's to modify probe intervals.
 

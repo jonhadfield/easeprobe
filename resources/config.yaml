@@ -13,7 +13,7 @@
 #     method: GET
 #     # Request Header
 #     headers:
-#       User-Agent: Customized User-Agent # default: "MegaEase EaseProbe / v1.6.0"
+#       User-Agent: Customized User-Agent # default: "MegaEase GuardianProbe / v1.6.0"
 #       X-head-one: xxxxxx
 #       X-head-two: yyyyyy
 #       X-head-THREE: zzzzzzX-
@@ -46,7 +46,7 @@
 #     success: 1 # number of consecutive successful probes needed to determine the status up , default: 1
 
 http: # http probes
-  - name: EaseProbe Github
+  - name: GuardianProbe Github
     url: https://github.com/o2ip/guardianprobe
 
 
@@ -217,7 +217,7 @@ http: # http probes
 #       #  Usage: "database:table:column:primary_key:value" : "expected_value"
 #       #         transfer to : "SELECT column FROM database.table WHERE primary_key = value"
 #       #         the `value` for `primary_key` must be int
-#       "test:product:name:id:1" : "EaseProbe" # select name from test.product where id = 1
+#       "test:product:name:id:1" : "GuardianProbe" # select name from test.product where id = 1
 #       "test:employee:age:id:2" : 45          # select age from test.employee where id = 2
 #     # mTLS - Optional
 #     ca: /path/to/file.ca
@@ -233,7 +233,7 @@ http: # http probes
 #     data: # Optional, find the specific value in the table
 #       #  Usage: "database:collection" : "{JSON}"
 #       "test:employee" : '{"name":"Hao Chen"}' # find the employee with name "Hao Chen"
-#       "test:product" : '{"name":"EaseProbe"}' # find the product with name "EaseProbe"
+#       "test:product" : '{"name":"GuardianProbe"}' # find the product with name "GuardianProbe"
 
 #   - name: Memcache Native Client (local)
 #     driver: "memcache"
@@ -260,7 +260,7 @@ http: # http probes
 #       #  Usage: "database:table:column:primary_key:value" : "expected_value"
 #       #         transfer to : "SELECT column FROM table WHERE primary_key = value"
 #       #         the `value` for `primary_key` must be int
-#       "test:product:name:id:1" : "EaseProbe" # select name from product where id = 1
+#       "test:product:name:id:1" : "GuardianProbe" # select name from product where id = 1
 #       "test:employee:age:id:2" : 45          # select age from employee where id = 2
 #     # mTLS - Optional
 #     ca: /path/to/file.ca
@@ -332,7 +332,7 @@ http: # http probes
 #   teams:
 #       - name: "teams alert service"
 #         webhook: "https://outlook.office365.com/webhook/a1269812-6d10-44b1-abc5-b84f93580ba0@9e7b80c7-d1eb-4b52-8582-76f921e416d9/IncomingWebhook/3fdd6767bae44ac58e5995547d66a4e4/f332c8d9-3397-4ac5-957b-b8e3fc465a8c" # see https://docs.microsoft.com/en-us/outlook/actionable-messages/send-via-connectors
-#   shell: # EaseProbe set the environment variables -
+#   shell: # GuardianProbe set the environment variables -
 #          # (see the example: resources/scripts/notify/notify.sh)
 #     - name: "shell alert service"
 #       cmd: "/bin/bash"
@@ -356,7 +356,7 @@ notify:
 # settings:
 
 #   # The customized name and icon
-#   name: "EaseProbe" # the name of the probe: default: "EaseProbe"
+#   name: "GuardianProbe" # the name of the probe: default: "GuardianProbe"
 #   icon: "https://path/to/icon.png" # the icon of the probe. default: "https://megaease.com/favicon.png"
 #   # Daemon settings
 

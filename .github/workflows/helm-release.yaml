@@ -33,4 +33,4 @@ jobs:
           charts_dir: helm
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          CR_RELEASE_NAME_TEMPLATE: "easeprobe-helm-charts-v{{ .Version }}"
+          CR_RELEASE_NAME_TEMPLATE: "guardianprobe-helm-charts-v{{ .Version }}"

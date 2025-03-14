@@ -25,7 +25,7 @@ services:
     volumes:
       - ./grafana:/etc/grafana/provisioning/datasources
 
-  # EaseProbe Service
+  # GuardianProbe Service
   easeprobe:
     image: o2ip/guardianprobe
     container_name: easeprobe

@@ -13,13 +13,13 @@ fi
 
 cat << EOF
 notify:
-  discord: 
+  discord:
      - name: "Test"
        webhook: "https://discord.com/api/webhooks/..."
        dry: true
 
 settings:
-  name: "EaseProbeTest"
+  name: "GuardianProbeTest"
   http:
     ip: 0.0.0.0
     port: 8888

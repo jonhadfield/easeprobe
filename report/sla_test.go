@@ -74,7 +74,7 @@ func setResultData(probes []probe.Prober) {
 }
 
 func TestSLA(t *testing.T) {
-	global.InitEaseProbe("DummyProbe", "icon")
+	global.InitGuardianProbe("DummyProbe", "icon")
 	probes := getProbers()
 	probes[0].Result().Status = probe.StatusDown
 	probe.SetResultData(probes[0].Name(), probes[0].Result())

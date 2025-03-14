@@ -27,12 +27,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestEaseProbe(t *testing.T) {
+func TestGuardianProbe(t *testing.T) {
 	e := GetGuardianProbe()
 	assert.Equal(t, DefaultProg, e.Name)
 	assert.Equal(t, DefaultIconURL, e.IconURL)
 
-	InitEaseProbe("test", "icon")
+	InitGuardianProbe("test", "icon")
 	e = GetGuardianProbe()
 	assert.Equal(t, "test", e.Name)
 	assert.Equal(t, "icon", e.IconURL)
@@ -53,18 +53,18 @@ func TestEaseProbe(t *testing.T) {
 // make sure add the following test flag in settings.json
 //
 //	"go.testFlags": ["-gcflags=-l"],
-func TestEaseProbeFail(t *testing.T) {
+func TestGuardianProbeFail(t *testing.T) {
 	monkey.Patch(os.Hostname, func() (string, error) {
 		return "", fmt.Errorf("error")
 	})
-	InitEaseProbe("test", "icon")
+	InitGuardianProbe("test", "icon")
 	e := GetGuardianProbe()
 	assert.Equal(t, "unknown", e.Host)
 
 	monkey.Unpatch(os.Hostname)
 }
 
-func TestEaseProbeTime(t *testing.T) {
+func TestGuardianProbeTime(t *testing.T) {
 	easeProbe = nil
 	tf := GetTimeFormat()
 	assert.Equal(t, DefaultTimeFormat, tf)

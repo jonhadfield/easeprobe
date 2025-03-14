@@ -175,7 +175,7 @@ func TestHTTPDoProbe(t *testing.T) {
 		}, nil
 	})
 	monkey.Patch(io.ReadAll, func(r io.Reader) ([]byte, error) {
-		return []byte(`{ "name": "EaseProbe", "status": "good"}`), nil
+		return []byte(`{ "name": "GuardianProbe", "status": "good"}`), nil
 	})
 
 	s, m := h.DoProbe()

@@ -22,20 +22,20 @@ GuardianProbe is a Go application and can be deployed on any platform that suppo
 
 This document describes how to deploy GuardianProbe on the following ways:
 
-- **Standalone Deployment** - run EaseProbe as a systemd service.
-- **Docker Deployment** - run EaseProbe as a container.
-- **Docker-Compose Deployment** - run EaseProbe as a docker-compose service which includes a Prometheus and a Grafana.
-- **Kubernetes Deployment** -  run EaseProbe as a kubernetes pod.
-- **Helm Deployment** - run EaseProbe as a kubernetes pod using helm.
+- **Standalone Deployment** - run GuardianProbe as a systemd service.
+- **Docker Deployment** - run GuardianProbe as a container.
+- **Docker-Compose Deployment** - run GuardianProbe as a docker-compose service which includes a Prometheus and a Grafana.
+- **Kubernetes Deployment** -  run GuardianProbe as a kubernetes pod.
+- **Helm Deployment** - run GuardianProbe as a kubernetes pod using helm.
 
 
 ## 2. Standalone Deployment
 
-The following steps describe how to deploy EaseProbe as a standalone application.
+The following steps describe how to deploy GuardianProbe as a standalone application.
 
-### 2.1 Download EaseProbe
+### 2.1 Download GuardianProbe
 
-Download the latest version of EaseProbe from the [EaseProbe Release Page](https://github.com/o2ip/guardianprobe/releases), find the EaseProbe binary for your platform and download it.
+Download the latest version of GuardianProbe from the [GuardianProbe Release Page](https://github.com/o2ip/guardianprobe/releases), find the GuardianProbe binary for your platform and download it.
 
 for example,
 
@@ -50,9 +50,9 @@ Then, you will find a binary named `easeprobe` in the current `./bin` directory.
 sudo ln -sf ${PWD}/bin/easeprobe /usr/local/bin/easeprobe
 ```
 
-### 2.2 Configure EaseProbe
+### 2.2 Configure GuardianProbe
 
-Before running EaseProbe, you need to create a configuration file for EaseProbe. The configuration file is a YAML file.
+Before running GuardianProbe, you need to create a configuration file for GuardianProbe. The configuration file is a YAML file.
 
 The following is an example of a configuration file - `/etc/easeprobe.conf`.
 
@@ -83,20 +83,20 @@ settings:
 
 There are three parameters need your attention:
 
-- `settings.sla.data`: the data file of EaseProbe
-- `settings.log.file`: the log file of EaseProbe
-- `settings.http.log.file`: the HTTP access log file  of EaseProbe
+- `settings.sla.data`: the data file of GuardianProbe
+- `settings.log.file`: the log file of GuardianProbe
+- `settings.http.log.file`: the HTTP access log file  of GuardianProbe
 
 
-### 2.3 Run EaseProbe
+### 2.3 Run GuardianProbe
 
-On Linux Platform, you can configure systemd to run EaseProbe as a service.
+On Linux Platform, you can configure systemd to run GuardianProbe as a service.
 
 The following is an example of a systemd service file - `easeprobe.service`
 
 ```ini
 [Unit]
-Description=EaseProbe Service
+Description=GuardianProbe Service
 After=network.target
 
 [Service]
@@ -146,7 +146,7 @@ settings:
     time: 10:00:01+08:00
 ```
 
-You can run the EaseProbe by the following command.
+You can run the GuardianProbe by the following command.
 
 ```bash
 docker run -d --name easeprobe \
@@ -158,7 +158,7 @@ docker run -d --name easeprobe \
 
 > Note:
 >
->  - `-p` option is used to expose the HTTP port of EaseProbe.
+>  - `-p` option is used to expose the HTTP port of GuardianProbe.
 >  - `-v` option is used to mount the configuration file and data file to the container.
 >    -  `/opt/config.yaml` is the configuration file default path in the container.
 >    -  `/opt/data/` is the data file default directory in the container.
@@ -166,7 +166,7 @@ docker run -d --name easeprobe \
 
 ## 4. Docker-Compose Deployment
 
-The docker-compose deployment is a simple way to deploy EaseProbe with Prometheus and Grafana.
+The docker-compose deployment is a simple way to deploy GuardianProbe with Prometheus and Grafana.
 
 You can visit [Docker-Compose](../resources/docker-compose/) directory to find the docker-compose file and the configuration files.
 
@@ -174,14 +174,14 @@ You can visit [Docker-Compose](../resources/docker-compose/) directory to find t
 resources/docker-compose
 ├── compose.yaml          # <-- the docker-compose file
 ├── easeprobe
-│   └── config.yaml       # <-- the EaseProbe configuration file
+│   └── config.yaml       # <-- the GuardianProbe configuration file
 ├── grafana
 │   └── datasource.yaml   # <-- the Grafana datasource configuration file
 └── prometheus
     └── prometheus.yaml   # <-- the Prometheus configuration file
 ```
 
-To start the EaseProbe, Prometheus and Grafana, run the following command.
+To start the GuardianProbe, Prometheus and Grafana, run the following command.
 
 ```bash
 cd resources/docker-compose
@@ -190,14 +190,14 @@ docker-compose up -d
 
 ## 5. Kubernetes Deployment
 
-Because EaseProbe needs to persist data,  we have to deploy the EaseProbe as Stateful-Set in Kubernetes, this would lead a bit complex deployment process.
+Because GuardianProbe needs to persist data,  we have to deploy the GuardianProbe as Stateful-Set in Kubernetes, this would lead a bit complex deployment process.
 
-1. Creating the ConfigMap for EaseProbe `config.yaml`
-2. Creating a PV/PVC for EaseProbe SLA data persistent.
-3. Deploy EaseProbe
-4. Create the EaseProbe Service
+1. Creating the ConfigMap for GuardianProbe `config.yaml`
+2. Creating a PV/PVC for GuardianProbe SLA data persistent.
+3. Deploy GuardianProbe
+4. Create the GuardianProbe Service
 
-### 5.1 Creating the ConfigMap for EaseProbe Configuration file
+### 5.1 Creating the ConfigMap for GuardianProbe Configuration file
 
 The following is an example of a configuration file - `config.yaml`.
 
@@ -243,7 +243,7 @@ data:
         level: "info"
 ```
 
-### 5.2 Creating a PV/PVC for EaseProbe SLA data persistent.
+### 5.2 Creating a PV/PVC for GuardianProbe SLA data persistent.
 
 To be simple, we use the NFS as an example
 
@@ -297,9 +297,9 @@ status:
     storage: 10Gi
 ```
 
-### 5.3 Deploy EaseProbe
+### 5.3 Deploy GuardianProbe
 
-This is the deployment file for EaseProbe.
+This is the deployment file for GuardianProbe.
 
 ```yaml
 apiVersion: apps/v1
@@ -345,9 +345,9 @@ spec:
 >  - The `configmap-volume-0` is the ConfigMap for `config.yaml`, which is mounted as volume under `/opt/config.yaml` in the container.
 >  - The `pvc-volume-easeprobe-pvc` is the PVC for SLA data persistent, which is mounted as a volume under `/opt/data` in the container.
 
-### 5.4 Create the EaseProbe Service
+### 5.4 Create the GuardianProbe Service
 
-The service is used to expose the HTTP port of EaseProbe.
+The service is used to expose the HTTP port of GuardianProbe.
 
 > Note:
 >
@@ -380,7 +380,7 @@ helm repo add easeprobe https://megaease.github.io/easeprobe
 helm install [RELEASE_NAME] easeprobe/easeprobe
 ```
 > **Note**:
-  > Persistence for EaseProbe using Helm is not enabled by default, you must enable it for production environment, refer to [Helm README](../helm/easeprobe/README.md#parameters) for more details.
+  > Persistence for GuardianProbe using Helm is not enabled by default, you must enable it for production environment, refer to [Helm README](../helm/easeprobe/README.md#parameters) for more details.
 
 **Uninstall**
 ```

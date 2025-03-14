@@ -4,7 +4,7 @@ GuardianProbe is a simple, standalone, and lightweight tool that can do health/s
 
 ![](./overview.png)
 
-EaseProbe has the following major modules:
+GuardianProbe has the following major modules:
 
 - **Probe**: It is used to check the health of the service.
 - **Notification**: It is used to send the Probe notification.
@@ -78,15 +78,15 @@ EaseProbe has the following major modules:
   - [7.2 Notification Configuration](#72-notification-configuration)
   - [7.3 Global Setting Configuration](#73-global-setting-configuration)
 - [8. Tools](#8-tools)
-  - [8.1 EaseProbe JSON Schema](#81-easeprobe-json-schema)
-  - [8.2 EaseProbe Deployment](#82-easeprobe-deployment)
+  - [8.1 GuardianProbe JSON Schema](#81-easeprobe-json-schema)
+  - [8.2 GuardianProbe Deployment](#82-easeprobe-deployment)
 
 
 
 
 # 1. Probe
 
-EaseProbe supports these probing methods: **HTTP**, **TCP**, **TLS**, **Shell Command**, **SSH Command**, **Host Resource Usage**, and **Native Client**.
+GuardianProbe supports these probing methods: **HTTP**, **TCP**, **TLS**, **Shell Command**, **SSH Command**, **Host Resource Usage**, and **Native Client**.
 
 ## 1.1 Overview
 
@@ -132,7 +132,7 @@ settings:
 
 All of the Probe supports alerting interval configuration.
 
-The alerting interval is the time EaseProbe keep sending service down alerting notification until the probe is back to normal.
+The alerting interval is the time GuardianProbe keep sending service down alerting notification until the probe is back to normal.
 
 The alerting interval is configured by three parameters: `strategy`, `factor` and `max`.
 
@@ -317,7 +317,7 @@ http:
     method: GET
     # Request Header
     headers:
-      User-Agent: Customized User-Agent # default: "MegaEase EaseProbe / v1.6.0"
+      User-Agent: Customized User-Agent # default: "MegaEase GuardianProbe / v1.6.0"
       X-head-one: xxxxxx
       X-head-two: yyyyyy
       X-head-THREE: zzzzzzX-
@@ -386,7 +386,7 @@ you can just use the XPath build-in function in expression so simplify the confi
     expression: "x_time('//feed/updated') > '2022-07-01'" # the expression to evaluate.
 ```
 
-Currently, EaseProbe supports the following XPath functions:
+Currently, GuardianProbe supports the following XPath functions:
 - `x_str` - get the string value from the XPath/RegExp query result.
 - `x_int` - get the integer value from the XPath/RegExp query result.
 - `x_float` - get the float value from the XPath/RegExp query result.
@@ -395,7 +395,7 @@ Currently, EaseProbe supports the following XPath functions:
 
 **3) Build-in Functions**
 
-Currently, EaseProbe supports the following build-in functions:
+Currently, GuardianProbe supports the following build-in functions:
 
 - `strlen` - get the string length.
 - `now` - get the current time.
@@ -730,7 +730,7 @@ host:
 
 ## 1.9 Native Client
 
-Native Client probe uses `client` identifier, it uses the native GO SDK to communicate with the remote endpoints. Additionally to simple connectivity checks, you can also define key and data validity checks for EaseProbe, it will query for the given keys and verify the data stored on each service.
+Native Client probe uses `client` identifier, it uses the native GO SDK to communicate with the remote endpoints. Additionally to simple connectivity checks, you can also define key and data validity checks for GuardianProbe, it will query for the given keys and verify the data stored on each service.
 
 Currently, support the following native client
   - **MySQL**. Connect to the MySQL server and run the `SHOW STATUS` SQL.
@@ -774,7 +774,7 @@ client:
       #  Usage: "database:table:column:primary_key:value" : "expected_value"
       #         transfer to : "SELECT column FROM database.table WHERE primary_key = value"
       #         the `value` for `primary_key` must be int
-      "test:product:name:id:1" : "EaseProbe" # select name from test.product where id = 1
+      "test:product:name:id:1" : "GuardianProbe" # select name from test.product where id = 1
       "test:employee:age:id:2" : 45          # select age from test.employee where id = 2
     # mTLS - Optional
     ca: /path/to/file.ca
@@ -795,7 +795,7 @@ client:
     data: # Optional, find the specific value in the table
       #  Usage: "database:collection" : "{JSON}"
       "test:employee" : '{"name":"Hao Chen"}' # find the employee with name "Hao Chen"
-      "test:product" : '{"name":"EaseProbe"}' # find the product with name "EaseProbe"
+      "test:product" : '{"name":"GuardianProbe"}' # find the product with name "GuardianProbe"
 ```
 
 ### 1.9.4 Memcache
@@ -837,7 +837,7 @@ client:
       #  Usage: "database:table:column:primary_key:value" : "expected_value"
       #         transfer to : "SELECT column FROM table WHERE primary_key = value"
       #         the `value` for `primary_key` must be int
-      "test:product:name:id:1" : "EaseProbe" # select name from product where id = 1
+      "test:product:name:id:1" : "GuardianProbe" # select name from product where id = 1
       "test:employee:age:id:2" : 45          # select age from employee where id = 2
     # mTLS - Optional
     ca: /path/to/file.ca
@@ -884,7 +884,7 @@ websocket:
 
 # 2. Notification
 
-EaseProbe supports a variety of notifications. The notifications are **Edge-Triggered**, this means that these notifications are triggered when the status changes.
+GuardianProbe supports a variety of notifications. The notifications are **Edge-Triggered**, this means that these notifications are triggered when the status changes.
 
 Each notification is identified by the delivery it supports (eg `slack`), a unique name (across all notifies in the configuration file) and (optionally) the notify specific parameters.
 
@@ -1160,7 +1160,7 @@ Example:
 ```YAML
 # Notification Configuration
 notify:
-  shell: # EaseProbe set the environment variables -
+  shell: # GuardianProbe set the environment variables -
          # (see the example: resources/scripts/notify/notify.sh)
     - name: "shell alert service"
       cmd: "/bin/bash"
@@ -1191,7 +1191,7 @@ notify:
 
 ## 3.1 SLA Report Notification
 
-EaseProbe supports minutely, hourly, daily, weekly, or monthly SLA reports.
+GuardianProbe supports minutely, hourly, daily, weekly, or monthly SLA reports.
 
 ```YAML
 settings:
@@ -1209,7 +1209,7 @@ settings:
 
 You can query the SLA Live Report
 
-  The EaseProbe would listen on the `0.0.0.0:8181` port by default. And you can access the Live SLA report by the following URL:
+  The GuardianProbe would listen on the `0.0.0.0:8181` port by default. And you can access the Live SLA report by the following URL:
 
   - HTML: `http://localhost:8181/`
   - JSON: `http://localhost:8181/api/v1/sla`
@@ -1230,11 +1230,11 @@ You can use the following URL query options for both HTML and JSON:
 
 ## 3.3 SLA Data Persistence
 
-EaseProbe would save the SLA statistics data on the disk.
+GuardianProbe would save the SLA statistics data on the disk.
 
 The SLA data would be persisted in `$CWD/data/data.yaml` by default. If you want to configure the path, you can do it in the `settings` section.
 
-When EaseProbe starts, it looks for the location of `data.yaml` and if found, loads the file and removes any probes that are no longer present in the configuration file. Setting a value of `"-"` for `data:` disables SLA persistence (eg `data: "-"`).
+When GuardianProbe starts, it looks for the location of `data.yaml` and if found, loads the file and removes any probes that are no longer present in the configuration file. Setting a value of `"-"` for `data:` disables SLA persistence (eg `data: "-"`).
 
 ```YAML
 settings:
@@ -1257,9 +1257,9 @@ This feature could help you group the Probers and Notifiers into a logical group
 
 > **Note**:
 >
-> If no Channel is defined on a probe or notify entry, then the default channel will be used. The default channel name is `__EaseProbe_Channel__`
+> If no Channel is defined on a probe or notify entry, then the default channel will be used. The default channel name is `__GuardianProbe_Channel__`
 >
-> EaseProbe versions prior to v1.5.0, do not have support for the `channel` feature
+> GuardianProbe versions prior to v1.5.0, do not have support for the `channel` feature
 
 ## 4.2 Examples
 
@@ -1304,21 +1304,21 @@ There are some administration configuration options:
 
 ## 5.1 PID file
 
-The EaseProbe would create a PID file (default `$CWD/easeprobe.pid`) when it starts. it can be configured by:
+The GuardianProbe would create a PID file (default `$CWD/easeprobe.pid`) when it starts. it can be configured by:
 
 ```YAML
 settings:
   pid: /var/run/easeprobe.pid
 ```
 
-- If the file already exists, EaseProbe would overwrite it.
-- If the file cannot be written, EaseProbe would exit with an error.
+- If the file already exists, GuardianProbe would overwrite it.
+- If the file cannot be written, GuardianProbe would exit with an error.
 
 If you want to disable the PID file, you can set it to "-" or "".
 
 ```YAML
 settings:
-  pid: "" # EaseProbe won't create a PID file
+  pid: "" # GuardianProbe won't create a PID file
 ```
 
 ## 5.2 Log file Rotation
@@ -1333,7 +1333,7 @@ file: /path/to/log/file
 self_rotate: true # default: true
 ```
 
-If `self_rotate` is `true`, EaseProbe would rotate the log automatically, and the following options are available:
+If `self_rotate` is `true`, GuardianProbe would rotate the log automatically, and the following options are available:
 
 ```YAML
 size: 10 # max size of log file. default: 10M
@@ -1342,18 +1342,18 @@ backups: 5 # max backup log files. default: 5
 compress: true # compress. default: true
 ```
 
-If `self_rotate` is `false`, EaseProbe will not rotate the log, and the log file will have to be rotated by a 3rd-party tool (such as `logrotate`) or manually by the administrator.
+If `self_rotate` is `false`, GuardianProbe will not rotate the log, and the log file will have to be rotated by a 3rd-party tool (such as `logrotate`) or manually by the administrator.
 
 ```shell
 mv /path/to/easeprobe.log /path/to/easeprobe.log.0
 kill -HUP `cat /path/to/easeprobe.pid`
 ```
 
-EaseProbe accepts the `HUP` signal to rotate the log.
+GuardianProbe accepts the `HUP` signal to rotate the log.
 
 # 6. Prometheus Metrics Exporter
 
-EaseProbe supports Prometheus metrics exporter. The Prometheus endpoint is `http://localhost:8181/metrics` by default.
+GuardianProbe supports Prometheus metrics exporter. The Prometheus endpoint is `http://localhost:8181/metrics` by default.
 
 The following snapshot is the Grafana panel for host CPU metrics
 
@@ -1429,9 +1429,9 @@ The Host probe supports the following metrics:
 
 # 7. Configuration
 
-EaseProbe can be configured by supplying a YAML file or URL to fetch configuration settings from.
+GuardianProbe can be configured by supplying a YAML file or URL to fetch configuration settings from.
 
-By default, EaseProbe will look for its `config.yaml` on the current folder. This behavior can be changed by supplying the `-f` parameter.
+By default, GuardianProbe will look for its `config.yaml` on the current folder. This behavior can be changed by supplying the `-f` parameter.
 
 ```shell
 easeprobe -f path/to/config.yaml
@@ -1443,14 +1443,14 @@ The following environment variables can be used to fine-tune the request to the 
 * `HTTP_AUTHORIZATION`
 * `HTTP_TIMEOUT`
 
-EaseProbe supports multiple configuration files, with the use of the command line flag `-f` which indicates the directory of the configuration files.
+GuardianProbe supports multiple configuration files, with the use of the command line flag `-f` which indicates the directory of the configuration files.
 
 ```shell
 easeprobe -f /path/to/conf
 ```
 
 
-The configuration file should be versioned, the version should be aligned with the EaseProbe binary version.
+The configuration file should be versioned, the version should be aligned with the GuardianProbe binary version.
 
 ```yaml
 version: v1.5.0
@@ -1476,7 +1476,7 @@ http:
     method: GET
     # Request Header
     headers:
-      User-Agent: Customized User-Agent # default: "MegaEase EaseProbe / v1.6.0"
+      User-Agent: Customized User-Agent # default: "MegaEase GuardianProbe / v1.6.0"
       X-head-one: xxxxxx
       X-head-two: yyyyyy
       X-head-THREE: zzzzzzX-
@@ -1680,7 +1680,7 @@ client:
       #  Usage: "database:table:column:primary_key:value" : "expected_value"
       #         transfer to : "SELECT column FROM database.table WHERE primary_key = value"
       #         the `value` for `primary_key` must be int
-      "test:product:name:id:1" : "EaseProbe" # select name from test.product where id = 1
+      "test:product:name:id:1" : "GuardianProbe" # select name from test.product where id = 1
       "test:employee:age:id:2" : 45          # select age from test.employee where id = 2
     # mTLS - Optional
     ca: /path/to/file.ca
@@ -1696,7 +1696,7 @@ client:
     data: # Optional, find the specific value in the table
       #  Usage: "database:collection" : "{JSON}"
       "test:employee" : '{"name":"Hao Chen"}' # find the employee with name "Hao Chen"
-      "test:product" : '{"name":"EaseProbe"}' # find the product with name "EaseProbe"
+      "test:product" : '{"name":"GuardianProbe"}' # find the product with name "GuardianProbe"
 
   - name: Memcache Native Client (local)
     driver: "memcache"
@@ -1723,7 +1723,7 @@ client:
       #  Usage: "database:table:column:primary_key:value" : "expected_value"
       #         transfer to : "SELECT column FROM table WHERE primary_key = value"
       #         the `value` for `primary_key` must be int
-      "test:product:name:id:1" : "EaseProbe" # select name from product where id = 1
+      "test:product:name:id:1" : "GuardianProbe" # select name from product where id = 1
       "test:employee:age:id:2" : 45          # select age from employee where id = 2
     # mTLS - Optional
     ca: /path/to/file.ca
@@ -1818,7 +1818,7 @@ notify:
       mobile: 123456789,987654321 # mobile phone number, multi phone number joint by `,`
       sign: "xxxxx" # get this from yunpian
 
-  # EaseProbe set the following environment variables
+  # GuardianProbe set the following environment variables
   #  - EASEPROBE_TYPE: "Status" or "SLA"
   #  - EASEPROBE_NAME: probe name
   #  - EASEPROBE_STATUS: "up" or "down"
@@ -1866,7 +1866,7 @@ notify:
 settings:
 
   # The customized name and icon
-  name: "EaseProbe" # the name of the probe: default: "EaseProbe"
+  name: "GuardianProbe" # the name of the probe: default: "GuardianProbe"
   icon: "https://path/to/icon.png" # the icon of the probe. default: "https://megaease.com/favicon.png"
   # Daemon settings
 
@@ -1964,9 +1964,9 @@ settings:
 ```
 # 8. Tools
 
-## 8.1 EaseProbe JSON Schema
+## 8.1 GuardianProbe JSON Schema
 
-We have a JSON schema that can be used to validate your EaseProbe configuration. The schema can be found at [resources/schema.json](https://raw.githubusercontent.com/o2ip/guardianprobe/main/resources/schema.json).
+We have a JSON schema that can be used to validate your GuardianProbe configuration. The schema can be found at [resources/schema.json](https://raw.githubusercontent.com/o2ip/guardianprobe/main/resources/schema.json).
 
 The schema file can be generated at any time by running the following command:
 
@@ -1986,8 +1986,8 @@ In order to use the schema with VSCode for validating your configuration, you ne
 }
 ```
 
-## 8.2 EaseProbe Deployment
+## 8.2 GuardianProbe Deployment
 
-EaseProbe can be deployed by Systemd, Docker, & Kubernetes.
+GuardianProbe can be deployed by Systemd, Docker, & Kubernetes.
 
 You can find the details in [Deployment Guide](./Deployment.md)

@@ -35,7 +35,7 @@ const (
 	// Org is the organization
 	Org = "MegaEase"
 	// DefaultProg is the program name
-	DefaultProg = "EaseProbe"
+	DefaultProg = "GuardianProbe"
 	// DefaultIconURL is the default icon which used in Slack or Discord
 	DefaultIconURL = "https://megaease.com/favicon.png"
 )
@@ -65,7 +65,7 @@ const (
 	// DefaultTimeOut is 30 seconds
 	DefaultTimeOut = time.Second * 30
 	// DefaultChannelName  is the default wide channel name
-	DefaultChannelName = "__EaseProbe_Channel__"
+	DefaultChannelName = "__GuardianProbe_Channel__"
 	// DefaultStatusChangeThresholdSetting is the threshold of status change
 	DefaultStatusChangeThresholdSetting = 1
 	// DefaultNotificationStrategy is the default notify strategy

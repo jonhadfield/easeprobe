@@ -20,7 +20,7 @@
         "version": {
           "type": "string",
           "title": "Version",
-          "description": "Version of the EaseProbe configuration"
+          "description": "Version of the GuardianProbe configuration"
         },
         "http": {
           "items": {
@@ -96,7 +96,7 @@
         "settings": {
           "$ref": "#/$defs/conf_Settings",
           "title": "Global Settings",
-          "description": "EaseProbe Global configuration"
+          "description": "GuardianProbe Global configuration"
         }
       },
       "additionalProperties": false,
@@ -296,35 +296,35 @@
       "properties": {
         "name": {
           "type": "string",
-          "title": "EaseProbe Name",
-          "description": "The name of the EaseProbe instance",
-          "default": "EaseProbe"
+          "title": "GuardianProbe Name",
+          "description": "The name of the GuardianProbe instance",
+          "default": "GuardianProbe"
         },
         "icon": {
           "type": "string",
           "title": "Icon URL",
-          "description": "The URL of the icon of the EaseProbe instance"
+          "description": "The URL of the icon of the GuardianProbe instance"
         },
         "pid": {
           "type": "string",
           "title": "PID File",
-          "description": "The PID file of the EaseProbe instance ('' or '-' means no PID file)"
+          "description": "The PID file of the GuardianProbe instance ('' or '-' means no PID file)"
         },
         "log": {
           "$ref": "#/$defs/conf_Log",
-          "title": "EaseProbe Log",
-          "description": "The log settings of the EaseProbe instance"
+          "title": "GuardianProbe Log",
+          "description": "The log settings of the GuardianProbe instance"
         },
         "timeformat": {
           "type": "string",
           "title": "Time Format",
-          "description": "The time format of the EaseProbe instance",
+          "description": "The time format of the GuardianProbe instance",
           "default": "2006-01-02 15:04:05Z07:00"
         },
         "timezone": {
           "type": "string",
           "title": "Time Zone",
-          "description": "The time zone of the EaseProbe instance",
+          "description": "The time zone of the GuardianProbe instance",
           "default": "UTC",
           "examples": [
             "Asia/Shanghai",
@@ -334,22 +334,22 @@
         "probe": {
           "$ref": "#/$defs/conf_Probe",
           "title": "Probe Settings",
-          "description": "The global probe settings of the EaseProbe instance"
+          "description": "The global probe settings of the GuardianProbe instance"
         },
         "notify": {
           "$ref": "#/$defs/conf_Notify",
           "title": "Notify Settings",
-          "description": "The global notify settings of the EaseProbe instance"
+          "description": "The global notify settings of the GuardianProbe instance"
         },
         "sla": {
           "$ref": "#/$defs/conf_SLAReport",
           "title": "SLA Report Settings",
-          "description": "The SLA report settings of the EaseProbe instance"
+          "description": "The SLA report settings of the GuardianProbe instance"
         },
         "http": {
           "$ref": "#/$defs/conf_HTTPServer",
           "title": "HTTP Server Settings",
-          "description": "The HTTP server settings of the EaseProbe instance"
+          "description": "The HTTP server settings of the GuardianProbe instance"
         }
       },
       "additionalProperties": false,

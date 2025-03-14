@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-// Package global is the package for EaseProbe
+// Package global is the package for GuardianProbe
 package global
 
 import (
@@ -27,8 +27,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// EaseProbe is the information of the program
-type EaseProbe struct {
+// GuardianProbe is the information of the program
+type GuardianProbe struct {
 	Name       string         `yaml:"name"`
 	IconURL    string         `yaml:"icon"`
 	Version    string         `yaml:"version"`
@@ -38,25 +38,25 @@ type EaseProbe struct {
 	TimeLoc    *time.Location `yaml:"-"`
 }
 
-var easeProbe *EaseProbe
+var easeProbe *GuardianProbe
 
 func init() {
-	InitEaseProbe(DefaultProg, DefaultIconURL)
+	InitGuardianProbe(DefaultProg, DefaultIconURL)
 }
 
-// InitEaseProbe the EaseProbe
-func InitEaseProbe(name, icon string) {
+// InitGuardianProbe the GuardianProbe
+func InitGuardianProbe(name, icon string) {
 	InitGuardianProbeWithTime(name, icon, DefaultTimeFormat, DefaultTimeZone)
 }
 
-// InitGuardianProbeWithTime init the EaseProbe with time
+// InitGuardianProbeWithTime init the GuardianProbe with time
 func InitGuardianProbeWithTime(name, icon, tf, tz string) {
 	host, err := os.Hostname()
 	if err != nil {
 		log.Errorf("Get Hostname Failed: %s", err)
 		host = "unknown"
 	}
-	easeProbe = &EaseProbe{
+	easeProbe = &GuardianProbe{
 		Name:    name,
 		IconURL: icon,
 		Version: Ver,
@@ -66,10 +66,10 @@ func InitGuardianProbeWithTime(name, icon, tf, tz string) {
 	SetTimeFormat(tf)
 }
 
-// GetGuardianProbe return the EaseProbe
-func GetGuardianProbe() *EaseProbe {
+// GetGuardianProbe return the GuardianProbe
+func GetGuardianProbe() *GuardianProbe {
 	if easeProbe == nil {
-		InitEaseProbe(DefaultProg, DefaultIconURL)
+		InitGuardianProbe(DefaultProg, DefaultIconURL)
 	}
 	return easeProbe
 }
@@ -109,7 +109,7 @@ func SetTimeZone(tz string) {
 }
 
 // FooterString return the footer string
-// e.g. "EaseProbe v1.0.0 @ localhost"
+// e.g. "GuardianProbe v1.0.0 @ localhost"
 func FooterString() string {
 	e := GetGuardianProbe()
 	return e.Name + " " + e.Version + " @ " + e.Host

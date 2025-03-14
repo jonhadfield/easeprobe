@@ -150,7 +150,7 @@ func TestManager(t *testing.T) {
 	assert.NotNil(t, "X", chs["X"])
 	assert.NotNil(t, "Y", chs["Y"])
 
-	global.InitEaseProbe("DummyProbe", "")
+	global.InitGuardianProbe("DummyProbe", "")
 
 	gProbeConf := global.ProbeSettings{}
 	test.GetProber("dummy").Config(gProbeConf)

@@ -23,11 +23,11 @@ jobs:
           with:
             go-version-file: go.mod
 
-        - name: Build EaseProbe
+        - name: Build GuardianProbe
           run: make
 
         - name: Generate JSON Schema
-          run: ./build/bin/easeprobe -j > resources/schema.json
+          run: ./build/bin/guardianprobe -j > resources/schema.json
 
         - name: Commit JSON Schema
           uses: EndBug/add-and-commit@v9

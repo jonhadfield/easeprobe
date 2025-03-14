@@ -9,7 +9,7 @@ assignees: ''
 
 **Environment (please complete the following information):**
  - OS: [Linux: uname -a]
- - EaseProbe Version [e.g. v1.2.0]
+ - GuardianProbe Version [e.g. v1.2.0]
 
 **Describe the bug**
 A clear and concise description of what the bug is.

@@ -67,7 +67,7 @@ func newDummyResult(name string) probe.Result {
 }
 
 func TestToLog(t *testing.T) {
-	global.InitEaseProbe("EaseProbe", "http://icon/url")
+	global.InitGuardianProbe("GuardianProbe", "http://icon/url")
 	r := newDummyResult("dummy")
 	str := ToLog(r)
 	assert.NotEmpty(t, str)
@@ -81,7 +81,7 @@ func TestToLog(t *testing.T) {
 }
 
 func TestToText(t *testing.T) {
-	global.InitEaseProbe("EaseProbe", "http://icon/url")
+	global.InitGuardianProbe("GuardianProbe", "http://icon/url")
 	r := newDummyResult("dummy")
 	str := ToText(r)
 	assert.NotEmpty(t, str)
@@ -136,18 +136,18 @@ func TestResultToJSON(t *testing.T) {
 }
 
 func TestResultToHTML(t *testing.T) {
-	global.InitEaseProbe("EaseProbe", "http://icon/url")
+	global.InitGuardianProbe("GuardianProbe", "http://icon/url")
 	r := newDummyResult("dummy")
 	str := ToHTML(r)
 	assert.NotEmpty(t, str)
-	assert.Contains(t, str, "EaseProbe")
+	assert.Contains(t, str, "GuardianProbe")
 	assert.Contains(t, str, r.Title())
 	assert.Contains(t, str, global.GetGuardianProbe().IconURL)
 }
 
 func checkMarkdown(t *testing.T, str string, r probe.Result) {
 	assert.NotEmpty(t, str)
-	assert.Contains(t, str, "EaseProbe")
+	assert.Contains(t, str, "GuardianProbe")
 	assert.Contains(t, str, r.Title())
 	assert.Contains(t, str, r.Status.Emoji())
 	assert.Contains(t, str, r.Message)
@@ -158,7 +158,7 @@ func checkMarkdown(t *testing.T, str string, r probe.Result) {
 }
 
 func TestResultToMarkdown(t *testing.T) {
-	global.InitEaseProbe("EaseProbe", "http://icon/url")
+	global.InitGuardianProbe("GuardianProbe", "http://icon/url")
 	r := newDummyResult("dummy")
 	str := ToMarkdown(r)
 	checkMarkdown(t, str, r)
@@ -168,11 +168,11 @@ func TestResultToMarkdown(t *testing.T) {
 }
 
 func TestResultToSlack(t *testing.T) {
-	global.InitEaseProbe("EaseProbe", "http://icon/url")
+	global.InitGuardianProbe("GuardianProbe", "http://icon/url")
 	r := newDummyResult("dummy")
 	str := ToSlack(r)
 	assert.NotEmpty(t, str)
-	assert.Contains(t, str, "EaseProbe")
+	assert.Contains(t, str, "GuardianProbe")
 	assert.Contains(t, str, r.Title())
 	assert.Contains(t, str, r.Status.Emoji())
 	assert.Contains(t, str, r.Message)
@@ -183,11 +183,11 @@ func TestResultToSlack(t *testing.T) {
 }
 
 func TestResultToLark(t *testing.T) {
-	global.InitEaseProbe("EaseProbe", "http://icon/url")
+	global.InitGuardianProbe("GuardianProbe", "http://icon/url")
 	r := newDummyResult("dummy")
 	str := ToLark(r)
 	assert.NotEmpty(t, str)
-	assert.Contains(t, str, "EaseProbe")
+	assert.Contains(t, str, "GuardianProbe")
 	assert.Contains(t, str, r.Title())
 	assert.Contains(t, str, r.Status.Emoji())
 	assert.Contains(t, str, r.Message)

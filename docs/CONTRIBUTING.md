@@ -79,17 +79,17 @@ Examples
     * `notify.go` - Initialize and configure the Notifiers.
     * `channel.go` - Initialize and configure the Channels.
     * `report.go` - SLA report.
-* `conf`. This package is for EaseProbe configuration and Log file.
-    * `conf.go` - EaseProbe configuration file processing.
-    * `log.go` - EaseProbe application log and access log.
-* `daemon`. This package is about EaseProbe daemon operations, such as: create the pid file.
+* `conf`. This package is for GuardianProbe configuration and Log file.
+    * `conf.go` - GuardianProbe configuration file processing.
+    * `log.go` - GuardianProbe application log and access log.
+* `daemon`. This package is about GuardianProbe daemon operations, such as: create the pid file.
     * `daemon.go` -  General operations for all platforms
     * `daemon_windows.go` - For Windows platform
     * `daemon_linux.go` - For Linux platform
     * `daemon_unix.go` - For all non-Windows and non-Linux platform such as: macOS & OpenBSD
 * `global`. This package defines the Global variables, structures and functions.
     * `global.go` - Default Value, Retry, TLS structure, Working Directory...
-    * `easeprobe.go` - Holds the EaseProbe Name, Icon, Version, Host information.
+    * `easeprobe.go` - Holds the GuardianProbe Name, Icon, Version, Host information.
     * `probe.go` - The common configuration for all Probers.
     * `notify.go` - The common configuration for all Notifiers.
 * `metric`. This package is for external metric report, like prometheus.
@@ -114,15 +114,15 @@ Examples
     * `types.go` - The format of report
     * `sla.go` - SLA report for all of format.
     * `result.go`- Probe Result for all of format.
-* `web`. This package is the web server for EaseProbe SLA report and API
+* `web`. This package is the web server for GuardianProbe SLA report and API
     * `server.go` - Web Server
     * `log.go` - Access Log
 ​
 ## Makefile
 The project provides a `Makefile` with the following targets
-* `build`: compile the project and produce the EaseProbe binary
+* `build`: compile the project and produce the GuardianProbe binary
 * `test`: runs `go test`
-* `docker`: builds the docker images for EaseProbe (using `resources/Dockerfile`)
+* `docker`: builds the docker images for GuardianProbe (using `resources/Dockerfile`)
 * `clean`: cleans up files created during build
 ​
 ​
