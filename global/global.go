@@ -33,7 +33,7 @@ import (
 
 const (
 	// Org is the organization
-	Org = "MegaEase"
+	Org = "VMO2"
 	// DefaultProg is the program name
 	DefaultProg = "GuardianProbe"
 	// DefaultIconURL is the default icon which used in Slack or Discord
