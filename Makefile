@@ -38,7 +38,13 @@ test:
 	go test -gcflags=-l -cover -race ${TEST_FLAGS} -v ./...
 
 docker:
-	sudo DOCKER_BUILDKIT=1 docker build -t TBC/guardianprobe -f ${MKFILE_DIR}/resources/Dockerfile ${MKFILE_DIR}
+	DOCKER_BUILDKIT=1 docker build -t vmo2apps.azurecr.io/guardian/guardianprobe -f ${MKFILE_DIR}/resources/Dockerfile ${MKFILE_DIR}
+
+release-docker:
+	DOCKER_BUILDKIT=1 docker build -t vmo2apps.azurecr.io/guardian/guardianprobe:latest -f ${MKFILE_DIR}/resources/Dockerfile ${MKFILE_DIR}
+	az account set --subscription O2UK-IT-CoreCommonServices-Tier0
+	az acr login --name vmo2apps
+	docker push vmo2apps.azurecr.io/guardian/guardianprobe:latest
 
 clean:
 	@rm -rf ${MKFILE_DIR}/build

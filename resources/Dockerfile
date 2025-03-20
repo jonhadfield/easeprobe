@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine as builder
+FROM golang:1.23-alpine as builder
 WORKDIR /go/src/github.com/o2ip/guardianprobe/
 COPY ./ /go/src/github.com/o2ip/guardianprobe/
 RUN --mount=type=cache,target=/var/cache/apk \
