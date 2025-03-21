@@ -101,6 +101,8 @@ type Notify struct {
 type Probe struct {
 	Interval                             time.Duration `yaml:"interval" json:"interval,omitempty" jsonschema:"type=string,format=duration,title=Probe Interval,description=the interval of probe,default=1m"`
 	Timeout                              time.Duration `yaml:"timeout" json:"timeout,omitempty" jsonschema:"type=string,format=duration,title=Probe Timeout,description=the timeout of probe,default=30s"`
+	ProbeMaintenanceStart                string        `yaml:"maintenance_start,omitempty" json:"maintenance_start,omitempty" jsonschema:"type=string,format=time,title=Probe Maintenance Start Time,description=the maintenance window start time of probe"`
+	ProbeMaintenanceEnd                  string        `yaml:"maintenance_end,omitempty" json:"maintenance_end,omitempty" jsonschema:"type=string,format=time,title=Probe Maintenance End Time,description=the maintenance window end time of probe"`
 	global.StatusChangeThresholdSettings `yaml:",inline" json:",inline"`
 	global.NotificationStrategySettings  `yaml:"alert" json:"alert" jsonschema:"title=Alert,description=the alert settings"`
 }

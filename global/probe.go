@@ -32,8 +32,10 @@ type StatusChangeThresholdSettings struct {
 
 // ProbeSettings is the global probe setting
 type ProbeSettings struct {
-	Interval time.Duration
-	Timeout  time.Duration
+	Interval         time.Duration
+	Timeout          time.Duration
+	MaintenanceStart string
+	MaintenanceEnd   string
 	StatusChangeThresholdSettings
 	NotificationStrategySettings
 }

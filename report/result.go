@@ -50,6 +50,7 @@ func ToText(r probe.Result) string {
 // resultDTO only for JSON format notification
 type resultDTO struct {
 	Name           string            `json:"name"`
+	ProbeName      string            `json:"probe_name"`
 	Endpoint       string            `json:"endpoint"`
 	StartTime      time.Time         `json:"time"`
 	StartTimestamp int64             `json:"timestamp"`
@@ -64,6 +65,7 @@ type resultDTO struct {
 func ToJSON(r probe.Result) string {
 	ro := resultDTO{
 		Name:           r.Title(),
+		ProbeName:      r.ProbeName,
 		Endpoint:       r.Endpoint,
 		StartTime:      r.StartTime,
 		StartTimestamp: r.StartTimestamp,
@@ -78,6 +80,7 @@ func ToJSON(r probe.Result) string {
 		log.Errorf("error: %v", err)
 		return ""
 	}
+
 	return string(j)
 }
 
@@ -85,6 +88,7 @@ func ToJSON(r probe.Result) string {
 func ToJSONIndent(r probe.Result) string {
 	ro := resultDTO{
 		Name:           r.Title(),
+		ProbeName:      r.ProbeName,
 		Endpoint:       r.Endpoint,
 		StartTime:      r.StartTime,
 		StartTimestamp: r.StartTimestamp,

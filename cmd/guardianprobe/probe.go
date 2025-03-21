@@ -37,6 +37,8 @@ func configProbers(probers []probe.Prober) []probe.Prober {
 		Timeout:                       conf.Get().Settings.Probe.Timeout,
 		StatusChangeThresholdSettings: conf.Get().Settings.Probe.StatusChangeThresholdSettings,
 		NotificationStrategySettings:  conf.Get().Settings.Probe.NotificationStrategySettings,
+		MaintenanceStart:              conf.Get().Settings.Probe.ProbeMaintenanceStart,
+		MaintenanceEnd:                conf.Get().Settings.Probe.ProbeMaintenanceEnd,
 	}
 	log.Debugf("Global Probe Configuration: %+v", gProbeConf)
 
@@ -85,6 +87,12 @@ func runProbers(probers []probe.Prober, wg *sync.WaitGroup, done chan bool, save
 		interval := time.NewTimer(p.Interval())
 		defer interval.Stop()
 		for {
+			if p.UnderMaintenance() {
+				log.Infof("%s / %s - Under maintenance...", p.Kind(), p.Name())
+				time.Sleep(p.Interval())
+				continue
+			}
+
 			res := p.Probe()
 			log.Debugf("%s: %s", p.Kind(), res.DebugJSON())
 			// send the result to the persistent channel
@@ -102,7 +110,7 @@ func runProbers(probers []probe.Prober, wg *sync.WaitGroup, done chan bool, save
 				return
 			case <-interval.C:
 				interval.Reset(p.Interval())
-				log.Debugf("%s / %s - %s Interval is up, continue...", p.Kind(), p.Name(), p.Interval())
+				log.Infof("%s / %s - %s Interval is up, continue...", p.Kind(), p.Name(), p.Interval())
 			}
 		}
 	}

@@ -147,6 +147,8 @@ http:
     url: https://cloud.megaease.cn/
     timeout: 2m
     interval: 30s
+    maintenance_start: 23:00
+    maintenance_end: 01:00
     channels:
       - "telegram#Dev"
   - name: Env Variables
@@ -168,6 +170,8 @@ func checkHTTPProbe(t *testing.T, probe httpProbe.HTTP) {
 		assert.Equal(t, probe.ProbeTimeout, 2*time.Minute)
 		assert.Equal(t, probe.ProbeTimeInterval, 30*time.Second)
 		assert.Equal(t, probe.Channels(), []string{"telegram#Dev"})
+		assert.Equal(t, probe.ProbeMaintenanceStart, "23:00")
+		assert.Equal(t, probe.ProbeMaintenanceEnd, "01:00")
 	case "Env Variables":
 		assert.Equal(t, probe.URL, os.Getenv("WEB_SITE"))
 	default:

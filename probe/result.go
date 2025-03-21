@@ -40,6 +40,7 @@ type Stat struct {
 // Result is the status of health check
 type Result struct {
 	Name             string            `json:"name" yaml:"name"`
+	ProbeName        string            `json:"probe_name" yaml:"probe_name"`
 	Endpoint         string            `json:"endpoint" yaml:"endpoint"`
 	StartTime        time.Time         `json:"time" yaml:"time"`
 	StartTimestamp   int64             `json:"timestamp" yaml:"timestamp"`
@@ -104,6 +105,7 @@ func NewResultWithName(name string) *Result {
 func (r *Result) Clone() Result {
 	dst := Result{}
 	dst.Name = r.Name
+	dst.ProbeName = r.ProbeName
 	dst.Endpoint = r.Endpoint
 	dst.StartTime = r.StartTime
 	dst.StartTimestamp = r.StartTimestamp

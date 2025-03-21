@@ -52,6 +52,8 @@ type DefaultProbe struct {
 	ProbeChannels                        []string          `yaml:"channels" json:"channels,omitempty" jsonschema:"title=Probe Channels,description=the channels of probe message need to send to"`
 	ProbeTimeout                         time.Duration     `yaml:"timeout,omitempty" json:"timeout,omitempty" jsonschema:"type=string,format=duration,title=Probe Timeout,description=the timeout of probe"`
 	ProbeTimeInterval                    time.Duration     `yaml:"interval,omitempty" json:"interval,omitempty" jsonschema:"type=string,format=duration,title=Probe Interval,description=the interval of probe"`
+	ProbeMaintenanceStart                string            `yaml:"maintenance_start,omitempty" json:"maintenance_start,omitempty" jsonschema:"type=string,format=time,title=Probe Maintenance Start Time,description=the maintenance window start time of probe"`
+	ProbeMaintenanceEnd                  string            `yaml:"maintenance_end,omitempty" json:"maintenance_end,omitempty" jsonschema:"type=string,format=time,title=Probe Maintenance End Time,description=the maintenance window end time of probe"`
 	Labels                               prometheus.Labels `yaml:"labels,omitempty" json:"labels,omitempty" jsonschema:"title=Probe LabelMap,description=the labels of probe"`
 	global.StatusChangeThresholdSettings `yaml:",inline" json:",inline"`
 	global.NotificationStrategySettings  `yaml:"alert" json:"alert" jsonschema:"title=Probe Alert,description=the alert strategy of probe"`
@@ -90,6 +92,23 @@ func (d *DefaultProbe) Channels() []string {
 // Timeout get the probe timeout
 func (d *DefaultProbe) Timeout() time.Duration {
 	return d.ProbeTimeout
+}
+
+// UnderMaintenance check if the probe is under maintenance
+func (d *DefaultProbe) UnderMaintenance() bool {
+	fmt.Println("PMS:", d.ProbeMaintenanceStart, "PME:", d.ProbeMaintenanceEnd)
+	if d.ProbeMaintenanceStart == "" || d.ProbeMaintenanceEnd == "" {
+		return false
+	}
+
+	is, err := isCurrentTimeBetween(d.ProbeMaintenanceStart, d.ProbeMaintenanceEnd)
+	if err != nil {
+		log.Errorf("Error checking maintenance window: %v", err)
+		return false
+	}
+
+	fmt.Println("UNDER MAINTENANCE =", is)
+	return is
 }
 
 // Interval get the probe interval
@@ -153,6 +172,8 @@ func (d *DefaultProbe) Config(gConf global.ProbeSettings,
 
 	d.ProbeTimeout = gConf.NormalizeTimeOut(d.ProbeTimeout)
 	d.ProbeTimeInterval = gConf.NormalizeInterval(d.ProbeTimeInterval)
+	d.ProbeMaintenanceStart = gConf.MaintenanceStart
+	d.ProbeMaintenanceEnd = gConf.MaintenanceEnd
 	d.StatusChangeThresholdSettings = gConf.NormalizeThreshold(d.StatusChangeThresholdSettings)
 	d.NotificationStrategySettings = gConf.NormalizeNotificationStrategy(d.NotificationStrategySettings)
 
@@ -190,6 +211,8 @@ func (d *DefaultProbe) Config(gConf global.ProbeSettings,
 
 // Probe return the checking result
 func (d *DefaultProbe) Probe() probe.Result {
+	d.ProbeResult.ProbeName = d.ProbeName
+
 	if d.ProbeFunc == nil {
 		return *d.ProbeResult
 	}
@@ -328,4 +351,41 @@ func (d *DefaultProbe) GetProxyConnection(socks5 string, host string) (net.Conn,
 		return proxyDialer.Dial("tcp", host)
 	}
 	return net.DialTimeout("tcp", host, d.ProbeTimeout)
+}
+
+func parseTimeString(timeStr string) (time.Time, error) {
+	layout := "15:04"
+	return time.Parse(layout, timeStr)
+}
+
+func isCurrentTimeBetween(startTimeStr, endTimeStr string) (bool, error) {
+	// Parse the start and end times
+	startTime, err := parseTimeString(startTimeStr)
+	if err != nil {
+		return false, err
+	}
+	fmt.Println("Start Time:", startTime.String())
+	endTime, err := parseTimeString(endTimeStr)
+	if err != nil {
+		return false, err
+	}
+	fmt.Println("End Time:", endTime.String())
+	// Get the current time
+	now := time.Now()
+	currentTime := time.Date(0, 1, 1, now.Hour(), now.Minute(), 0, 0, time.UTC)
+
+	// Adjust start and end times to the same reference date
+	start := time.Date(0, 1, 1, startTime.Hour(), startTime.Minute(), 0, 0, time.UTC)
+	end := time.Date(0, 1, 1, endTime.Hour(), endTime.Minute(), 0, 0, time.UTC)
+
+	// Check if the time range spans midnight
+	if start.Before(end) {
+		fmt.Println("Start time is before end time", start.String(), end.String(), currentTime.String())
+		// Normal range (e.g., 09:00 to 17:00)
+		return (currentTime.After(start) || currentTime.Equal(start)) && (currentTime.Before(end) || currentTime.Equal(end)), nil
+	} else {
+		fmt.Println("Start time is after end time", start.String(), end.String(), currentTime.String())
+		// Range spans midnight (e.g., 23:00 to 03:00)
+		return (currentTime.After(start) || currentTime.Equal(start)) || (currentTime.Before(end) || currentTime.Equal(end)), nil
+	}
 }

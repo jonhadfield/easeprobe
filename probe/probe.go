@@ -37,5 +37,6 @@ type Prober interface {
 	Interval() time.Duration
 	Result() *Result
 	Config(global.ProbeSettings) error
+	UnderMaintenance() bool
 	Probe() Result
 }

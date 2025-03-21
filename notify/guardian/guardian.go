@@ -64,6 +64,7 @@ func (c *NotifyConfig) SendGuardian(title, text string) error {
 
 type NotificationFormat struct {
 	Name      string            `json:"name"`
+	ProbeName string            `json:"probe_name"`
 	Endpoint  string            `json:"endpoint"`
 	Time      time.Time         `json:"time"`
 	Timestamp int64             `json:"timestamp"`
@@ -83,6 +84,7 @@ func (c *NotifyConfig) SendGuardianNotification(text string) error {
 
 	type notificationSendFormat struct {
 		Name      string            `json:"name"`
+		ProbeName string            `json:"probe_name"`
 		Endpoint  string            `json:"endpoint"`
 		Time      time.Time         `json:"time"`
 		Timestamp int64             `json:"timestamp"`
@@ -95,6 +97,7 @@ func (c *NotifyConfig) SendGuardianNotification(text string) error {
 
 	n := notificationSendFormat{
 		Name:      notification.Name,
+		ProbeName: notification.ProbeName,
 		Endpoint:  notification.Endpoint,
 		Time:      notification.Time,
 		Timestamp: notification.Timestamp,

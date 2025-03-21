@@ -341,11 +341,12 @@ func TestMetaData(t *testing.T) {
 }
 
 type DummyProbe struct {
-	MyName     string
-	MyResult   *Result
-	MyChannels []string
-	MyTimeout  time.Duration
-	MyInterval time.Duration
+	MyName             string
+	MyResult           *Result
+	MyChannels         []string
+	MyTimeout          time.Duration
+	MyInterval         time.Duration
+	MyUnderMaintenance bool
 }
 
 func (d *DummyProbe) LabelMap() prometheus.Labels {
@@ -376,6 +377,10 @@ func (d *DummyProbe) Result() *Result {
 func (d *DummyProbe) Config(gConf global.ProbeSettings) error {
 	return nil
 }
+func (d *DummyProbe) UnderMaintenance() bool {
+	return d.MyUnderMaintenance
+}
+
 func (d *DummyProbe) Probe() Result {
 	return *d.MyResult
 }
