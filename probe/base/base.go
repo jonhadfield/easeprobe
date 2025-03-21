@@ -96,7 +96,6 @@ func (d *DefaultProbe) Timeout() time.Duration {
 
 // UnderMaintenance check if the probe is under maintenance
 func (d *DefaultProbe) UnderMaintenance() bool {
-	fmt.Println("PMS:", d.ProbeMaintenanceStart, "PME:", d.ProbeMaintenanceEnd)
 	if d.ProbeMaintenanceStart == "" || d.ProbeMaintenanceEnd == "" {
 		return false
 	}

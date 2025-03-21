@@ -80,6 +80,7 @@ func ToJSON(r probe.Result) string {
 		log.Errorf("error: %v", err)
 		return ""
 	}
+	log.Info("ToJSON:", string(j))
 
 	return string(j)
 }
@@ -102,6 +103,7 @@ func ToJSONIndent(r probe.Result) string {
 		log.Errorf("error: %v", err)
 		return ""
 	}
+	log.Info("ToJSONIndent:", string(j))
 	return string(j)
 }
 
